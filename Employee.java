@@ -42,7 +42,7 @@ private int clockOutTime;
   /**
   *Clocks out Employee
   */
-  public void clockOut()[
+  public void clockOut(){
     clockOutTime = System.timeInMillis();
   }
     
@@ -50,6 +50,16 @@ private int clockOutTime;
   *Gives last clock in time
   *@return Clock in time
   */
-  public 
+  public int getClockInTime(){
+    return clockInTime;
+  }
+    
+  /**
+  *Gives last clock out time
+  *@return Clock out time
+  */
+  public int getClockOutTime(){
+    return clockInTime;
+  }
 
 }
