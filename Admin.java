@@ -1,7 +1,7 @@
 public class Admin extends Employee
 {
-	public Admin(String uN, String iD)
+	public Admin(String user, String pass)
 	{
-		super(uN, iD);
+		super(user, pass);
 	}
 }
