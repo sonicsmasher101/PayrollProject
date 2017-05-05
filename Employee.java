@@ -1,7 +1,7 @@
 /**
   Class to represent an Employee
 */
-public class Employee{
+public class Employee implements Worker{
 
 private String username;
 private String password;
