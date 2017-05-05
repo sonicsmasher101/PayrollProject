@@ -7,15 +7,17 @@ private String username;
 private String password;
 private int clockInTime;
 private int clockOutTime;
+private double payRate;
   
   /**
   *Creates an Employee with username and password
   *@param Employee's username
   *@param Employee's password
   */
-  public Employee(String user, String pass){
+  public Employee(String user, String pass, double payR){
     username = user;
     password = pass;
+    payRate=payR;
   }
   
   /**
@@ -64,5 +66,14 @@ private int clockOutTime;
   public int getClockOutTime(){
     return clockInTime;
   }
+  
+  /**
+    Gets the pay for the day for the employee
+    @return the pay for the day
+  */
+  public double getPay()
+  {
+    return (clockOutTime-clockInTime)*payRate;
+  }  
 
 }
