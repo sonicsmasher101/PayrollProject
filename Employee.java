@@ -1,3 +1,6 @@
+/**
+  Class to represent an Employee
+*/
 public class Employee{
 
 private String username;
