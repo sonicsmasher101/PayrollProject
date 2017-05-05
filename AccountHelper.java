@@ -31,4 +31,22 @@ public class AccountHelper{
     employees.put(user, pass);
   }
   
+  /**
+  *Gives password of an admin given their username
+  *@param The admin username
+  */
+  public String getPasswordAdmin(String user){
+    if(admins.containsKey(user)) return admins.get(user);
+    else return null;
+  }
+  
+  /**
+  *Gives password of an employee given their username
+  *@param The employee username
+  */
+  public String getPasswordEmployee(String user){
+    if(employees.containsKey(user)) return employees.get(user);
+    else return null;
+  }
+  
 }
