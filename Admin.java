@@ -1,6 +1,6 @@
-Public Class Admin extends Employee
+public class Admin extends Employee
 {
-	Public Admin(String uN, String iD)
+	public Admin(String uN, String iD)
 	{
 		super(uN, iD);
 	}
