@@ -1,8 +1,11 @@
 /**
 *Class used to represent an Admin, which is subclass of Employee
 */
-public class Admin extends Employee
+public class Admin implements Worker
 {
+private String username;
+private String password;
+
 	/**
 	*Consructs an Admin
 	*@param user username
@@ -10,6 +13,7 @@ public class Admin extends Employee
 	*/
 	public Admin(String user, String pass)
 	{
-		super(user, pass);
+		username = user;
+		password = pass;
 	}
 }
