@@ -1,7 +1,7 @@
 /**
 *Class used to represent an Admin, which is subclass of Employee
 */
-public class Admin implements Worker
+public class Admin
 {
 private String username;
 private String password;
@@ -15,5 +15,21 @@ private String password;
 	{
 		username = user;
 		password = pass;
+	}
+	
+	/**
+	*Gives Admin username
+	*@return Username
+	*/
+	public String getUsername(){
+		return username;;
+	}
+	
+	/**
+	*Gives Admin password
+	*@return Password
+	*/
+	public String getPassword(){
+		return password;
 	}
 }
