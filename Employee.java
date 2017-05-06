@@ -1,54 +1,66 @@
 /**
-  Class to represent an Employee
+*Class to represent an Employee
 */
-public class Employee implements Worker{
+public class Employee{
 
-private String username;
-private String password;
+private String name;
+private int id;
 private int clockInTime;
 private int clockOutTime;
 private double payRate;
+private boolean clockable;
   
   /**
   *Creates an Employee with username and password
   *@param Employee's username
   *@param Employee's password
   */
-  public Employee(String user, String pass, double payR){
-    username = user;
-    password = pass;
-    payRate=payR;
+  public Employee(String name, int id, double payR){
+    this.name = name;
+    this.id = id;
+    payRate = payR;
+    clockable = true;
   }
   
   /**
-  *Gives employee's username
-  *@return Username
+  *Gives employee's name
+  *@return name
   */
-  public String getUsername(){
-    return username;
+  public String getName(){
+    return name;
   }
    
   /**
-  *Gives employee's password
-  *@return Password
+  *Gives employee's ID
+  *@return ID
   */
-  public String getPassword(){
-    return password;
+  public String getID(){
+    return id;
   }
   
   /**
   *Clocks in Employee and refreshes clock out time
   */
-  public void clockIn(){
+  public boolean clockIn(){
+    if(clockable){
     clockInTime = System.timeInMillis();
-    clockOutTime = System.timeInMillis();
+    clockOutTime = clockInTime;
+    clockable = false;
+    return true;
+    }
+    else return false;
   }
   
   /**
   *Clocks out Employee
   */
-  public void clockOut(){
+  public boolean clockOut(){
+    if(!clockable){
     clockOutTime = System.timeInMillis();
+    clockable = true;
+    return true;
+    }
+    else return false;
   }
     
   /**
@@ -68,12 +80,12 @@ private double payRate;
   }
   
   /**
-    Gets the pay for the day for the employee
-    @return the pay for the day
+  *Gets the pay for the day for the employee
+  *@return the pay for the day
   */
   public double getPay()
   {
-    return (clockOutTime-clockInTime)*payRate;
+    return ((clockOutTime-clockInTime)/60000)*payRate;
   }  
 
 }
