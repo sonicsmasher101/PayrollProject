@@ -9,6 +9,6 @@ public class Tester{
     System.out.println("Press enter when you want to clock out employee!");
     in.next();
     employee.clockOut();
-    System.out.println("Employee wages: " employee.getWages());
+    System.out.println("Employee wages: " employee.getPay());
   }
 }
