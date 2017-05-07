@@ -28,3 +28,8 @@ Worker contains unimplemented login method
 Employee has methods to login, and to logout, which keep track of the time when called
 Logout method saves time worked to file for admin
 Employee method to check whether or not 8 hours have passed, and if true, log out the employee, tracking time worked as well
+
+Project Partitioning
+Jonathan- Main Method/Admin Class/ClickListener
+Tarun- GUI/Employee Class/Worker Interface
+Yoga- GUI/ClickListener
