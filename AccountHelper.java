@@ -49,4 +49,13 @@ public class AccountHelper{
     else return null;
   }
   
+  /**
+  *Universal method meant for adding on extra info into a file
+  *@param info to be added
+  *@param file to be written into
+  *@param writer for the same file
+  */
+  public static void add(String info, File file, PrintWriter writer){
+  }
+  
 }
