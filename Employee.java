@@ -1,5 +1,4 @@
 import java.util.File;
-import java.util.PrintWriter;
 
 /**
 *Class to represent an Employee
@@ -14,7 +13,6 @@ private int clockOutTime;
 private double payRate;
 private boolean clockable;
 private File file;
-private PrintWriter writer;
   
   /**
   *Creates an Employee with username and password
@@ -27,7 +25,6 @@ private PrintWriter writer;
     payRate = payR;
     clockable = true;
     file = new File(name);
-    writer = new PrintWriter(file);
   }
   
   /**
@@ -65,7 +62,7 @@ private PrintWriter writer;
   public boolean clockOut(){
     if(!clockable){
     clockOutTime = System.timeInMillis();
-    AccountHelper.add(clockOutTime - clockInTime, writer);
+    AccountHelper.add(Integer.toString(clockOutTime - clockInTime), file);
     clockable = true;
     clockOutTime = 0;
     clockInTime = 0;
