@@ -1,7 +1,8 @@
 /**
 *Class to represent an Employee
 */
-public class Employee{
+public class Employee implements Worker
+{
 
 private String name;
 private int id;
@@ -87,5 +88,12 @@ private boolean clockable;
   {
     return ((clockOutTime-clockInTime)/60000)*payRate;
   }  
+  
+  /**
+	*Logs in employee
+	*/
+	public void login(){
+	//To be implemented
+	}
 
 }
