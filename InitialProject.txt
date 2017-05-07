@@ -1,7 +1,7 @@
 SUCC (Super Useful Coding Children)
 Mr. Webb
 AP Computer Science
-? May 2017
+10 May 2017
 Initial Project Proposal
 	This program is going to provide an employer to keep track of the hours worked by each employee, as well as calculate the pay for each and every employee. The program allows for workers to login, and then logout once they are done working for the day. However, after eight hours, if the worker hasn’t yet logged out, they will be automatically be logged out of the system. When an employee is logged out, the system keeps track of the number of hours that have passed since the login time. This time is them kept track of in a file containing the worked time for all of the employees.The admin can then access the file and calculate the pay for the workers. 
 
