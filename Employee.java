@@ -1,4 +1,5 @@
 import java.util.File;
+import java.util.ArrayList;
 
 /**
 *Class to represent an Employee
@@ -8,11 +9,12 @@ public class Employee implements Worker
 
 private String name;
 private int id;
-private int clockInTime;
-private int clockOutTime;
+private long clockInTime;
+private long clockOutTime;
 private double payRate;
 private boolean clockable;
 private File file;
+public static ArrayList<long> clockTimes;
   
   /**
   *Creates an Employee with username and password
@@ -39,7 +41,7 @@ private File file;
   *Gives employee's ID
   *@return ID
   */
-  public String getID(){
+  public int getID(){
     return id;
   }
   
@@ -62,7 +64,7 @@ private File file;
   public boolean clockOut(){
     if(!clockable){
     clockOutTime = System.timeInMillis();
-    AccountHelper.add(Integer.toString(clockOutTime - clockInTime), file);
+    clockTimes.add(clockOutTime - clockInTime);
     clockable = true;
     clockOutTime = 0;
     clockInTime = 0;
@@ -75,7 +77,7 @@ private File file;
   *Gives last clock in time
   *@return Clock in time
   */
-  public int getClockInTime(){
+  public long getClockInTime(){
     return clockInTime;
   }
     
@@ -83,7 +85,7 @@ private File file;
   *Gives last clock out time
   *@return Clock out time
   */
-  public int getClockOutTime(){
+  public long getClockOutTime(){
     return clockOutTime;
   }
   
