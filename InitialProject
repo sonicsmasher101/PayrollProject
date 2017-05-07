@@ -1,0 +1,30 @@
+SUCC (Super Useful Coding Children)
+Mr. Webb
+AP Computer Science
+? May 2017
+Initial Project Proposal
+	This program is going to provide an employer to keep track of the hours worked by each employee, as well as calculate the pay for each and every employee. The program allows for workers to login, and then logout once they are done working for the day. However, after eight hours, if the worker hasn’t yet logged out, they will be automatically be logged out of the system. When an employee is logged out, the system keeps track of the number of hours that have passed since the login time. This time is them kept track of in a file containing the worked time for all of the employees.The admin can then access the file and calculate the pay for the workers. 
+
+Requirements:
+Employee login system, utilizing ID and name, which should
+Be able to handle multiple employees at the same time
+Admin login, using password
+Separate login areas for admin and employee login, so the admin only needs to use the admin login
+Admin needs to be able to
+Add employees to the system
+Remove employees from the system
+Set and edit hourly pay for the employees
+Calculate pay for each worker after each week of work
+Employee logout system, which should
+Calculate and print out time between login time and logout time
+Store time worked for each employee in a way that the admin can access
+Automatically logout employee after 8 hours if they forget to logout and notify them the next time they log in
+	
+Initial Design
+Employee class that has instance fields First Name, Last Name, ID number, Login Time, Logout Time
+Admin class, which has methods to add/remove employees from system
+Both employee and admin classes will implement an interface worker
+Worker contains unimplemented login method
+Employee has methods to login, and to logout, which keep track of the time when called
+Logout method saves time worked to file for admin
+Employee method to check whether or not 8 hours have passed, and if true, log out the employee, tracking time worked as well
