@@ -1,4 +1,8 @@
 import java.util.HashMap;
+import java.util.File;
+import java.util.PrintWriter;
+import java.util.Scanner
+import java.util.ArrayList;
 
 public class AccountHelper{
   private HashMap<String, String> admins;
@@ -52,10 +56,15 @@ public class AccountHelper{
   /**
   *Universal method meant for adding on extra info into a file
   *@param info to be added
-  *@param file to be written into
-  *@param writer for the same file
+  *@param file to add to
   */
-  public static void add(String info, File file, PrintWriter writer){
+  public static void add(String info, File file){
+    Scanner reader = new Scanner(file);
+    PrintWriter writer = new PrintWriter(file);
+    while(reader.hasNext()){
+      writer.println(reader.next());
+    }
+    writer.println(info);
   }
   
 }
