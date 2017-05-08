@@ -99,16 +99,28 @@ public static ArrayList<long> clockTimes;
   }  
   
   /**
-	*Logs in employee
-	*/
-	public void login(){
-	if(clockable){
-    		clockInTime = System.timeInMillis();
-    		clockOutTime = clockInTime;
-    		clockable = false;
-    		return true;
-   		 }
-    	else return false;
-	}
+  *Logs in employee
+  */
+  public void login(){
+  if(clockable){
+    	clockInTime = System.timeInMillis();
+    	clockOutTime = clockInTime;
+    	clockable = false;
+    	return true;
+   		}
+  else return false;
+}
 
+  public void logout()
+  {
+  	if(!clockable){
+    clockOutTime = System.timeInMillis();
+    clockTimes.add(clockOutTime - clockInTime);
+    clockable = true;
+    clockOutTime = 0;
+    clockInTime = 0;
+    return true;
+    }
+    else return false;
+  }
 }
