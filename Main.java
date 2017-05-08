@@ -7,7 +7,7 @@ public class Main{
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(400, 400);
     frame.setLocationRelativeTo(null);
+    frame.add(new PushCounterPanel());
     frame.setVisible(true);
   }
-  
 }
