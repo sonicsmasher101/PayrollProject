@@ -1,5 +1,5 @@
 /**
-*Class used to represent an Admin, which is subclass of Employee
+*Class used to represent an Admin
 */
 public class Admin implements Worker
 {
