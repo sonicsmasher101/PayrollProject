@@ -102,7 +102,13 @@ public static ArrayList<long> clockTimes;
 	*Logs in employee
 	*/
 	public void login(){
-	//To be implemented
+	if(clockable){
+    		clockInTime = System.timeInMillis();
+    		clockOutTime = clockInTime;
+    		clockable = false;
+    		return true;
+   		 }
+    	else return false;
 	}
 
 }
