@@ -1,12 +1,13 @@
-import javax.swing.JPanel;
+import javax.swing.JFrame;
 
 public class Main{
 
   public static void main(String[] args){
-    JPanel panel = new JPanel("Payroll Application");
-    panel.setDefaultCloseOperation(JPanel.EXIT_ON_CLOSE);
-    panel.pack();
-    panel.setVisible(true);
+    JFrame frame = new JFrame("Payroll Application");
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(400, 400);
+    frame.setLocationRelativeTo(null);
+    frame.setVisible(true);
   }
   
 }
