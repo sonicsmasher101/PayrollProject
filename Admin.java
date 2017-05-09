@@ -22,7 +22,7 @@ private String password;
 	*@return Username
 	*/
 	public String getUsername(){
-		return username;;
+		return username;
 	}
 	
 	/**
@@ -37,6 +37,10 @@ private String password;
 	*Logs in admin
 	*/
 	public void login(){
+	//To be implemented
+	}
+	
+	public void logout(){
 	//To be implemented
 	}
 }
