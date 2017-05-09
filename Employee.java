@@ -1,4 +1,4 @@
-import java.util.File;
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +14,7 @@ private long clockOutTime;
 private double payRate;
 private boolean clockable;
 private File file;
-public static ArrayList<long> clockTimes;
+public static ArrayList<Long> clockTimes;
   
   /**
   *Creates an Employee with username and password
@@ -50,12 +50,13 @@ public static ArrayList<long> clockTimes;
   */
   public boolean clockIn(){
     if(clockable){
-    clockInTime = System.timeInMillis();
+    clockInTime = System.currentTimeMillis();
     clockOutTime = clockInTime;
     clockable = false;
     return true;
     }
-    else return false;
+    else 
+    	return false;
   }
   
   /**
@@ -63,7 +64,7 @@ public static ArrayList<long> clockTimes;
   */
   public boolean clockOut(){
     if(!clockable){
-    clockOutTime = System.timeInMillis();
+    clockOutTime = System.currentTimeMillis();
     clockTimes.add(clockOutTime - clockInTime);
     clockable = true;
     clockOutTime = 0;
@@ -103,24 +104,24 @@ public static ArrayList<long> clockTimes;
   */
   public void login(){
   if(clockable){
-    	clockInTime = System.timeInMillis();
+    	clockInTime = System.currentTimeMillis();
     	clockOutTime = clockInTime;
     	clockable = false;
-    	return true;
-   		}
-  else return false;
+
+   		} // tarun, i got rid of the returns here
+
 }
 
   public void logout()
   {
   	if(!clockable){
-    clockOutTime = System.timeInMillis();
+    clockOutTime = System.currentTimeMillis();
     clockTimes.add(clockOutTime - clockInTime);
     clockable = true;
     clockOutTime = 0;
     clockInTime = 0;
-    return true;
-    }
-    else return false;
+
+    }// tarun, i got rid of the returns here
+
   }
 }
