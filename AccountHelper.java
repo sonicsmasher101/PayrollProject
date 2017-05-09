@@ -1,8 +1,10 @@
 import java.util.HashMap;
-import java.util.File;
-import java.util.PrintWriter;
-import java.util.Scanner
+import java.io.File;
+import java.io.PrintWriter;
+import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.IOException;
+import java.io.FileNotFoundException;
 
 public class AccountHelper{
   private HashMap<String, String> admins;
@@ -59,12 +61,16 @@ public class AccountHelper{
   *@param file to add to
   */
   public static void add(String info, File file){
+    try{
     Scanner reader = new Scanner(file);
     PrintWriter writer = new PrintWriter(file);
     while(reader.hasNext()){
       writer.println(reader.next());
     }
     writer.println(info);
-  }
-  
+	  }
+	  catch(FileNotFoundException e){}
+	  }
+	  
+
 }
