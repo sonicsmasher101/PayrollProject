@@ -9,10 +9,6 @@ public class Main{
     frame.add(new PushCounterPanel());
     frame.setVisible(true);
     //Gui code goes here
-      
-      while(true)
-    {
-      
-    }
+  
   }
 }
