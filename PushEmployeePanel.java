@@ -27,6 +27,7 @@ public class PushEmployeePanel extends JPanel{
 				catch(IllegalArgumentException e){
 				System.err.println("Integer not entered!");
 				}
+				pane.showOutputDialog("DERP!");
 			}
 		}
 		
