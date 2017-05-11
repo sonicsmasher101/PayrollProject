@@ -25,7 +25,7 @@ public class AccountHelper{
   *@param Password for new employee
   */
   public void addEmployee(Employee e){
-    employees.put(e.getUsername(), (Integer)e.getID());
+    employees.put(e.getName(), (Integer)e.getID());
   }
   
   /**
