@@ -40,7 +40,7 @@ public class AccountHelper{
   *Gives password of an employee given their username if the username exists, will return null otherwise
   *@param The employee username
   */
-  public String getID(String user){
+  public int getID(String user){
     if(checkUsername(user)) return employees.get(user);
     else return null;
   }
