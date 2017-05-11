@@ -3,7 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class PushEmployeePanel extends JPanel{
-	//Class to be implemented fully
+
 	public PushEmployeePanel(){
 		
 		setPreferredSize(new Dimension(300, 400));
@@ -11,9 +11,22 @@ public class PushEmployeePanel extends JPanel{
 	}
 	
 	private class ButtonListener implements ActionListener{
-		
+		//Needs to be properly completed, error code may be incorrect
 		public void actionPerformed(ActionEvent event){
-			
+			JOptionPane pane = new JOptionPane();
+			String username = "";
+			while(!AccountHelper.checkUsername(username)) username = pane.showInputDialog("Input correct username:");
+			String id;
+			int idNum = AccountHelper.getID(username);
+			while(AccountHelper.getID(username) != Integer.parseInt(id)){
+				id = pane.showInputDialog("Enter id:");
+				throw{
+				Integer.parseInt(id);
+				}
+				catch(InvalidParameterException e){
+				System.err.println("Integer not entered!");
+				}
+			}
 		}
 		
 	}
