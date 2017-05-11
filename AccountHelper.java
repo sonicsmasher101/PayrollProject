@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 
 public class AccountHelper{
   private HashMap<String, String> admins;
-  private HashMap<String, String> employees;
+  private HashMap<String, int> employees;
   
   /**
   *AccountHelper class that is simply meant to store usernames and password of admins and employees seperately.
@@ -24,8 +24,8 @@ public class AccountHelper{
   *@param Username for new admin
   *@param Password for new admin
   */
-  public void addAdmin(String user, String pass){
-    admins.put(user, pass);
+  public void addAdmin(String user, int id){
+    admins.put(user, id);
   }
   
    /**
@@ -33,8 +33,8 @@ public class AccountHelper{
   *@param Username for new employee
   *@param Password for new employee
   */
-  public void addEmployee(String user, String pass){
-    employees.put(user, pass);
+  public void addEmployee(String user, int id){
+    employees.put(user, id);
   }
   
   /**
@@ -50,7 +50,7 @@ public class AccountHelper{
   *Gives password of an employee given their username
   *@param The employee username
   */
-  public String getPasswordEmployee(String user){
+  public String getID(String user){
     if(employees.containsKey(user)) return employees.get(user);
     else return null;
   }
