@@ -6,7 +6,7 @@ public class Main{
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(400, 400);
     frame.setLocationRelativeTo(null);
-    AccountHelper.addEmployee(new Emplpoyee("Jonathan Corderdo", 6969));
+    AccountHelper.addEmployee(new Employee("Jonathan Corderdo", 6969));
     frame.add(new PushEmployeePanel());
     frame.setVisible(true);
     //Gui code goes here
