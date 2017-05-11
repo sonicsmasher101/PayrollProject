@@ -54,6 +54,14 @@ public class AccountHelper{
     if(employees.containsKey(user)) return employees.get(user);
     else return null;
   }
+	
+  /**
+  *Checks if given username exists
+  *@param Test Username
+  */
+  public boolean checkUsername(String user){
+	  return employees.containsKey(user);
+  }
   
   /**
   *Universal method meant for adding on extra info into a file
