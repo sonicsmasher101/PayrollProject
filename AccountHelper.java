@@ -16,7 +16,7 @@ public class AccountHelper{
   *@param Password for first admin
   */
   public AccountHelper(String username, String password){
-    admin = new Admin(usernmae, password);
+    admin = new Admin(username, password);
   }
   
    /**
