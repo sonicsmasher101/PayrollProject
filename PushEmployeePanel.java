@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.lang.*;
+import java.lang.IllegalArgumentException;
 
 public class PushEmployeePanel extends JPanel{
 
