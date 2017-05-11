@@ -4,9 +4,9 @@ import javax.swing.*;
 import java.lang.IllegalArgumentException;
 
 public class PushEmployeePanel extends JPanel{
-
-	public PushEmployeePanel(){
-		
+private AccountHelper helper;
+	public PushEmployeePanel(AccountHelper helper){
+		this.helper = helper;
 		setPreferredSize(new Dimension(300, 400));
 		setBackground(Color.black);
 	}
@@ -16,10 +16,10 @@ public class PushEmployeePanel extends JPanel{
 		public void actionPerformed(ActionEvent event){
 			JOptionPane pane = new JOptionPane();
 			String username = "";
-			while(!AccountHelper.checkUsername(username)) username = pane.showInputDialog("Input correct username:");
+			while(!helper.checkUsername(username)) username = pane.showInputDialog("Input correct username:");
 			String id;
 			int idNum = AccountHelper.getID(username);
-			while(AccountHelper.getID(username) != Integer.parseInt(id)){
+			while(helper.getID(username) != Integer.parseInt(id)){
 				id = pane.showInputDialog("Enter id:");
 				try{
 				Integer.parseInt(id);
