@@ -42,7 +42,7 @@ public class AccountHelper{
   */
   public int getID(String user){
     if(checkUsername(user)) return employees.get(user);
-    else return null;
+    else return -1;
   }
 	
   /**
