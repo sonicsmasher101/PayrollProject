@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 
 public class AccountHelper{
-  private HashMap<String, String> admins;
-  private HashMap<String, int> employees;
+  private Admin admin;
+  private HashMap<String, Integer> employees;
   
   /**
   *AccountHelper class that is simply meant to store usernames and password of admins and employees seperately.
@@ -16,16 +16,7 @@ public class AccountHelper{
   *@param Password for first admin
   */
   public AccountHelper(String username, String password){
-    admins.put(username, password);
-  }
-  
-  /**
-  *Adds new admin to system
-  *@param Username for new admin
-  *@param Password for new admin
-  */
-  public void addAdmin(String user, int id){
-    admins.put(user, id);
+    admin = new Admin(usernmae, password);
   }
   
    /**
@@ -33,25 +24,24 @@ public class AccountHelper{
   *@param Username for new employee
   *@param Password for new employee
   */
-  public void addEmployee(String user, int id){
-    employees.put(user, id);
+  public void addEmployee(Employee e){
+    employees.put(e.getUsername(), e.getID());
   }
   
   /**
-  *Gives password of an admin given their username
+  *Gives password of the admin
   *@param The admin username
   */
-  public String getPasswordAdmin(String user){
-    if(admins.containsKey(user)) return admins.get(user);
-    else return null;
+  public String getPasswordAdmin(){
+    return admin.getPassword();
   }
   
   /**
-  *Gives password of an employee given their username
+  *Gives password of an employee given their username if the username exists, will return null otherwise
   *@param The employee username
   */
   public String getID(String user){
-    if(employees.containsKey(user)) return employees.get(user);
+    if(checkUsername(user)) return employees.get(user);
     else return null;
   }
 	
@@ -60,7 +50,7 @@ public class AccountHelper{
   *@param Test Username
   */
   public boolean checkUsername(String user){
-	  return employees.containsKey(user);
+    return employees.containsKey(user);
   }
   
   /**
