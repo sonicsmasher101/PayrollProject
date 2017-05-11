@@ -20,10 +20,10 @@ public class PushEmployeePanel extends JPanel{
 			int idNum = AccountHelper.getID(username);
 			while(AccountHelper.getID(username) != Integer.parseInt(id)){
 				id = pane.showInputDialog("Enter id:");
-				throw{
+				try{
 				Integer.parseInt(id);
 				}
-				catch(InvalidParameterException e){
+				catch(IllegalArgumentException e){
 				System.err.println("Integer not entered!");
 				}
 			}
