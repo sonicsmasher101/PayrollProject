@@ -32,7 +32,7 @@ private JButton button;
 				Integer.parseInt(id);
 				}
 				catch(NumberFormatException e){
-				System.err.println("Integer not entered!");
+				JOptionPane.showMessageDialog(null, "Number not entered, please enter an integer", "Number not entered, please enter an integer", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 			JOptionPane.showMessageDialog(null, "DERP!");
