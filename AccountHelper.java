@@ -31,10 +31,18 @@ public class AccountHelper{
   
   /**
   *Gives password of the admin
-  *@param The admin username
+  *@return The admin username
   */
   public String getAdminPassword(){
     return admin.getPassword();
+  }
+  
+  /**
+   *Gives username of the admin
+   * @return The admin password
+   */
+  public String getAdminUsername(){
+	  return admin.getUsername();
   }
   
   /**
@@ -42,7 +50,7 @@ public class AccountHelper{
   *@param The employee username
   */
   public int getID(String user){
-    if(checkUsername(user)) return (int)employees.get(user);
+    if(checkUsername(user)) return (Integer) employees.get(user);
     else return -1;
   }
 	
