@@ -21,6 +21,7 @@ private JLabel succ;
 		succ.setIcon(new ImageIcon("src\\SUCC.jpg"));
 		succ.setText("SUCC");
 		add(succ);
+		setMinimumSize(new Dimension(300, 400));
 	}
 	
 	private class EmployeeButtonListener implements ActionListener{
