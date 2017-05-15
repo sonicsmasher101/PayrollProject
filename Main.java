@@ -8,7 +8,7 @@ public class Main{
     frame.setLocationRelativeTo(null);
     AccountHelper Tarun = new AccountHelper("Tarun", "AD");
     Tarun.addEmployee(new Employee("Jonathan Cordero", 6969, 420.69));
-    frame.add(new PushEmployeePanel(Tarun));
+    frame.add(new PushPanel(Tarun));
     frame.setVisible(true);
     //Gui code goes here
   
