@@ -17,7 +17,7 @@ private JLabel succ;
 		aButton.addActionListener(new AdminButtonListener());
 		add(eButton);
 		add(aButton);
-		succ.setIcon(new ImageIcon("SUCC.jpg"));
+		succ.setIcon(new ImageIcon("src\\SUCC.jpg"));
 		succ.setText("SUCC");
 		add(succ);
 	}
