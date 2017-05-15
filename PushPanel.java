@@ -13,6 +13,7 @@ private JLabel succ;
 		setBackground(Color.DARK_GRAY);
 		eButton = new JButton("Employee Login");
 		aButton = new JButton("Admin Login");
+		succ = new JLabel();
 		eButton.addActionListener(new EmployeeButtonListener());
 		aButton.addActionListener(new AdminButtonListener());
 		add(eButton);
