@@ -10,7 +10,7 @@ public class Main{
     Tarun.addEmployee(new Employee("Jonathan Cordero", 6969, 420.69));
     frame.add(new PushPanel(Tarun));
     frame.setVisible(true);
-    //Gui code goes here
+
   
   }
 }
