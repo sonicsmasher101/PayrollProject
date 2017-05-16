@@ -13,13 +13,12 @@ private JLabel succ;
 		setBackground(Color.DARK_GRAY);
 		eButton = new JButton("Employee Login");
 		aButton = new JButton("Admin Login");
-		succ = new JLabel();
+		succ = new JLabel("SUCC");
 		eButton.addActionListener(new EmployeeButtonListener());
 		aButton.addActionListener(new AdminButtonListener());
 		add(eButton);
 		add(aButton);
 		succ.setIcon(new ImageIcon("src\\SUCC.gif"));
-		succ.setText("SUCC");
 		add(succ);
 		setMinimumSize(new Dimension(300, 400));
 	}
