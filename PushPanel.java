@@ -6,6 +6,7 @@ public class PushPanel extends JPanel{
 private AccountHelper helper;
 private JButton eButton;
 private JButton aButton;
+private JButton eBButton;
 private JLabel succ;
 	public PushPanel(AccountHelper helper){
 		this.helper = helper;
@@ -13,14 +14,17 @@ private JLabel succ;
 		setBackground(Color.DARK_GRAY);
 		eButton = new JButton("Employee Login");
 		aButton = new JButton("Admin Login");
-		succ = new JLabel("SUCC");
+                eBButton = new JButton("Employee Logout");
+		succ = new JLabel();
 		eButton.addActionListener(new EmployeeButtonListener());
 		aButton.addActionListener(new AdminButtonListener());
+                eBButton.addActionListener(new EmployeeButtonListenerB());
 		add(eButton);
 		add(aButton);
-		succ.setIcon(new ImageIcon("src\\SUCC.gif"));
+                add(eBButton);
+		succ.setIcon(new ImageIcon("src\\SUCC.jpg"));
+		succ.setText("SUCC");
 		add(succ);
-		setMinimumSize(new Dimension(300, 400));
 	}
 	
 	private class EmployeeButtonListener implements ActionListener{
@@ -28,6 +32,7 @@ private JLabel succ;
 		public void actionPerformed(ActionEvent event){
 			String username = "";
 			boolean cont = true;
+                        Employee t = null;
 			while(!helper.checkUsername(username) && cont){
 				username = JOptionPane.showInputDialog("Input valid username:");
 				if(username.equals("")) cont = false;
@@ -44,7 +49,40 @@ private JLabel succ;
 				JOptionPane.showMessageDialog(null, "Number not entered, please enter an integer", "Number not entered, please enter an integer", JOptionPane.WARNING_MESSAGE);
 				}
 			}
-			JOptionPane.showMessageDialog(null, "DERP!");
+			JOptionPane.showMessageDialog(null, "Login Successful");
+                        t= helper.getEmployee(username);
+                        t.login();
+			
+		}
+	}
+        
+        private class EmployeeButtonListenerB implements ActionListener{
+		//Needs to be properly completed, error code may be incorrect
+		public void actionPerformed(ActionEvent event){
+			String username = "";
+			boolean cont = true;
+                        Employee t = null;
+			while(!helper.checkUsername(username) && cont){
+				username = JOptionPane.showInputDialog("Input valid username:");
+				if(username.equals("")) cont = false;
+			}
+
+			String id = "-1";
+			int idNum = helper.getID(username);
+			while(helper.getID(username) != Integer.parseInt(id)){
+				id = JOptionPane.showInputDialog("Enter id:");
+				try{
+				Integer.parseInt(id);
+				}
+				catch(NumberFormatException e){
+				JOptionPane.showMessageDialog(null, "Number not entered, please enter an integer", "Number not entered, please enter an integer", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+                        t =helper.getEmployee(username);
+                        t.logout();
+                        double pay = t.getPay();
+			JOptionPane.showMessageDialog(null, "Logout Successful, pay: " + pay);
+                        
 			
 		}
 	}
@@ -66,7 +104,10 @@ private JLabel succ;
 				pass = JOptionPane.showInputDialog("Enter password:");
 				count--;
 			}
-			if(count != 0) JOptionPane.showMessageDialog(null, "DERP!");
+			if(count != 0){
+                            JOptionPane.showMessageDialog(null, "DERP!");
+                            
+                        }
 			else JOptionPane.showMessageDialog(null, "Incorrect Password Entered Too Many Times", "Incorrect Password Entered Too Many Times", JOptionPane.ERROR_MESSAGE);
 			
 		}
