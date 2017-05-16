@@ -6,6 +6,7 @@ public class AdminPanel{
 private JButton add;
 private JButton remove;
 private JButton calculate;
+private JLabel succ;
 
   public AdminPanel(){
     setPreferredSize(new Dimension(300, 400));
@@ -14,9 +15,13 @@ private JButton calculate;
     add = new JButton("Add Employee");
     remove = new JButton("Remove Employee");
     calculate = new JButton("Calculate Pay");
+    succ = new JLabel("SUCC");
+    succ.setIcon(new ImageIcon("src\\SUCC.gif"));
+    succ.setText("SUCC");
     add(add);
     add(remove);
     add(calculate);
+    add(succ);
   }
 
   private class AddButtonListener implements ActionListener{
