@@ -46,6 +46,8 @@ public class AccountHelper{
 				if(element.equals(name)) found = true;
 			}
 		}
+		employeePasswords.remove(name);
+		employees.remove(count);
 	}
 	else return false;
   }
