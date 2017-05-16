@@ -1,5 +1,7 @@
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
 *Class to represent an Employee
@@ -13,9 +15,9 @@ private long clockInTime;
 private long clockOutTime;
 private double payRate;
 private boolean clockable;
-private boolean showMessage;
 private File file;
 public static ArrayList<Long> clockTimes;
+private Timer autoLogout;
   
   /**
   *Creates an Employee with username and password
@@ -27,8 +29,8 @@ public static ArrayList<Long> clockTimes;
     this.id = id;
     payRate = payR;
     clockable = true;
-    showMessage = false;
     file = new File(name);
+    autoLogout = new Timer();
   }
   
   /**
@@ -109,8 +111,8 @@ public static ArrayList<Long> clockTimes;
     	clockInTime = System.currentTimeMillis();
     	clockOutTime = clockInTime;
     	clockable = false;
-
-   		} // tarun, i got rid of the returns here
+		autoLogout.schedule(autoOut,60000 * 8);
+   		} 
 
 }
 
@@ -123,15 +125,12 @@ public static ArrayList<Long> clockTimes;
     clockOutTime = 0;
     clockInTime = 0;
 
-    }// tarun, i got rid of the returns here
-
+  	}
   }
-  
-  /**
-  *Simply changes value of whether 8 hour message is displayed or not
-  */
-  public void toggleMessage(){
-   showMessage = !showMessage;
-  }
-  
+  TimerTask autoOut = new TimerTask () {
+    @Override
+    public void run () {
+       logout();
+    }
+};
 }
