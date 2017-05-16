@@ -8,7 +8,8 @@ import java.io.FileNotFoundException;
 
 public class AccountHelper{
   private Admin admin;
-  private HashMap employees;
+  private HashMap employeePasswords;
+  private ArrayList employees;
   
   /**
   *AccountHelper class that is simply meant to store usernames and password of admins and employees seperately.
@@ -17,16 +18,36 @@ public class AccountHelper{
   */
   public AccountHelper(String username, String password){
     admin = new Admin(username, password);
-    employees = new HashMap<String, Integer>();
+    employeePasswords = new HashMap<String, Integer>();
+    employees = new ArrayList<Employees>();
   }
   
    /**
   *Adds new admin to system
-  *@param Username for new employee
-  *@param Password for new employee
+  *@param Employee object of new employee
   */
   public void addEmployee(Employee e){
-    employees.put(e.getName(), (Integer)e.getID());
+    employeePasswords.put(e.getName(), (Integer)e.getID());
+    employees.add(e);
+  }
+	
+  /**
+  *Removes employee from system
+  *@param Name of employee to be removed
+  *@return True if employee was removed, false if employee wasn't found
+  */
+  public boolean removeEmployee(String name){
+	if(checkUsername(name)){
+		boolean found = false;
+		int count = -1;
+		for(String element: employees){
+			if(!found){
+				count++;
+				if(element.equals(name)) found = true;
+			}
+		}
+	}
+	else return false;
   }
   
   /**
@@ -42,7 +63,7 @@ public class AccountHelper{
    * @return The admin password
    */
   public String getAdminUsername(){
-	  return admin.getUsername();
+	return admin.getUsername();
   }
   
   /**
@@ -50,7 +71,7 @@ public class AccountHelper{
   *@param The employee username
   */
   public int getID(String user){
-    if(checkUsername(user)) return (Integer) employees.get(user);
+    if(checkUsername(user)) return (Integer) employeePasswords.get(user);
     else return -1;
   }
 	
@@ -59,7 +80,7 @@ public class AccountHelper{
   *@param Test Username
   */
   public boolean checkUsername(String user){
-    return employees.containsKey(user);
+    return employeePasswords.containsKey(user);
   }
   
   /**
