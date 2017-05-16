@@ -18,6 +18,7 @@ private boolean clockable;
 private File file;
 public static ArrayList<Long> clockTimes;
 private Timer autoLogout;
+private int payIndex=-1;
   
   /**
   *Creates an Employee with username and password
@@ -31,6 +32,7 @@ private Timer autoLogout;
     clockable = true;
     file = new File(name);
     autoLogout = new Timer();
+    clockTimes = new ArrayList<Long>();
   }
   
   /**
@@ -100,7 +102,8 @@ private Timer autoLogout;
   */
   public double getPay()
   {
-    return ((clockOutTime-clockInTime)/60000)*payRate;
+      payIndex++;
+    return ((clockTimes.get(payIndex))/60000)*payRate;
   }  
   
   /**
