@@ -13,6 +13,7 @@ private long clockInTime;
 private long clockOutTime;
 private double payRate;
 private boolean clockable;
+private boolean showMessage;
 private File file;
 public static ArrayList<Long> clockTimes;
   
@@ -26,6 +27,7 @@ public static ArrayList<Long> clockTimes;
     this.id = id;
     payRate = payR;
     clockable = true;
+    showMessage = false;
     file = new File(name);
   }
   
@@ -124,4 +126,12 @@ public static ArrayList<Long> clockTimes;
     }// tarun, i got rid of the returns here
 
   }
+  
+  /**
+  *Simply changes value of whether 8 hour message is displayed or not
+  */
+  public void toggleMessage(){
+   showMessage = !showMessage;
+  }
+  
 }
