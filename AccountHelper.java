@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 public class AccountHelper{
   private Admin admin;
   private HashMap employeePasswords;
-  private ArrayList employees;
+  private ArrayList<Employee> employees;
   
   /**
   *AccountHelper class that is simply meant to store usernames and password of admins and employees seperately.
@@ -19,7 +19,7 @@ public class AccountHelper{
   public AccountHelper(String username, String password){
     admin = new Admin(username, password);
     employeePasswords = new HashMap<String, Integer>();
-    employees = new ArrayList<Employees>();
+    employees = new ArrayList<Employee>();
   }
   
    /**
@@ -36,21 +36,23 @@ public class AccountHelper{
   *@param Name of employee to be removed
   *@return True if employee was removed, false if employee wasn't found
   */
+  
   public boolean removeEmployee(String name){
 	if(checkUsername(name)){
 		boolean found = false;
 		int count = -1;
-		for(String element: employees){
+		for(Employee element: employees){
 			if(!found){
 				count++;
-				if(element.equals(name)) found = true;
+				if(element.getName().equals(name)) found = true;
 			}
 		}
-		employeePasswords.remove(name);
-		employees.remove(count);
+                return found;
 	}
 	else return false;
   }
+  
+  
   
   /**
   *Gives password of the admin
@@ -101,6 +103,17 @@ public class AccountHelper{
 	  }
 	  catch(FileNotFoundException e){}
 	  }
+  public Employee getEmployee(String name)
+  {
+      Employee t = null;
+      for(int i=0; i<employees.size(); i++)
+      {          
+          if(name.equals(employees.get(i).getName()))
+          t=employees.get(i);
+      }
+      return t;
+      
+  }
 	  
 
 }
