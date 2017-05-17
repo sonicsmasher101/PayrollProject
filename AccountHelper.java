@@ -1,3 +1,5 @@
+package payroll;
+
 import java.util.HashMap;
 import java.io.File;
 import java.io.PrintWriter;
@@ -38,19 +40,20 @@ public class AccountHelper{
   */
   
   public boolean removeEmployee(String name){
-	if(checkUsername(name)){
-		boolean found = false;
-		int count = -1;
-		for(Employee element: employees){
-			if(!found){
-				count++;
-				if(element.getName().equals(name)) found = true;
-			}
-		}
-                return found;
+    boolean found = false;
+      if(checkUsername(name)){
+		for(int i=0; i<employees.size(); i++)
+                {
+                    if(name.equals(employees.get(i).getName())){
+                        employees.remove(i);
+                        employeePasswords.remove(name);
+                        found=true;
+                    }
+                }
+                }
+            return found;
 	}
-	else return false;
-  }
+ 
   
   
   
