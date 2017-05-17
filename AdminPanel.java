@@ -39,4 +39,20 @@ private JLabel succ;
 		}
 	}
   
+  private class RemoveButtonListener implements ActionListener{
+      public void actionPerformed(ActionEvent event)
+      {
+          String name = JOptionPane.showInputDialog("Name of employee to be removed");
+          String adminPass = JOptionPane.showInputDialog("Please enter admin password to continue");
+          if(adminPass.equals(helper.getAdminPassword()))
+          {
+              helper.removeEmployee(name);
+          }
+          else
+          {
+              JOptionPane.showMessageDialog(null, "Password not correct, employee not removed");
+          }
+      }
+  }
+  
 }
