@@ -19,6 +19,7 @@ private File file;
 public static ArrayList<Long> clockTimes;
 private Timer autoLogout;
 private int payIndex=-1;
+private boolean showMessage;
   
   /**
   *Creates an Employee with username and password
@@ -33,6 +34,7 @@ private int payIndex=-1;
     file = new File(name);
     autoLogout = new Timer();
     clockTimes = new ArrayList<Long>();
+    showMessage = false;
   }
   
   /**
@@ -114,7 +116,11 @@ private int payIndex=-1;
     	clockInTime = System.currentTimeMillis();
     	clockOutTime = clockInTime;
     	clockable = false;
-		autoLogout.schedule(autoOut,60000 * 8);
+	autoLogout.schedule(autoOut,60000 * 8);
+	if(showMessage){
+			JOptionPane.showMessageDialog(null, "You have been logged in, please remember to logout at the right time next time");
+			showMessage = false;
+			}
    		} 
 
 }
@@ -134,6 +140,7 @@ private int payIndex=-1;
     @Override
     public void run () {
        logout();
+       showMessage = true;
     }
 };
 }
