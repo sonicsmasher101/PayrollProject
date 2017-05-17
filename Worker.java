@@ -4,6 +4,3 @@ public interface Worker{
   
   public void logout();
 }
-
-
-hye
