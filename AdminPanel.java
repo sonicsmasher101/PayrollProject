@@ -33,7 +33,7 @@ private JLabel succ;
 			double pay;
 			name = JOptionPane.showInputDialog("Input new employee's name");
 			//Add catch error stuff for int and double
-			id = Integer.parseInteger(JOptionPane.showInputDialog("Input new employee's id"));
+			id = Integer.parseInt(JOptionPane.showInputDialog("Input new employee's id"));
 			pay = Double.parseDouble(JOptionPane.showInputDialog("Input new employee's payrate"));
 			helper.addEmployee(new Employee(name, id, pay));
 		}
