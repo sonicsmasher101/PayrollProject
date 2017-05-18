@@ -17,6 +17,9 @@ private JLabel succ;
     add = new JButton("Add Employee");
     remove = new JButton("Remove Employee");
     calculate = new JButton("Calculate Pay");
+    add.addActionListener(new AddButtonListener());
+    remove.addActionListener(new RemoveButtonListener());
+    calculate.addActionListener(new CalculateButtonListener());
     succ = new JLabel();
     succ.setIcon(new ImageIcon("src\\SUCC.gif"));
     add(add);
@@ -53,6 +56,12 @@ private JLabel succ;
               JOptionPane.showMessageDialog(null, "Password not correct, employee not removed");
           }
       }
+  }
+	
+  private class CalculateButtonListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+		String employeeName = JOptionPane.showInputDialog("Name of employee to calculate pay for");
+	}
   }
   
 }
