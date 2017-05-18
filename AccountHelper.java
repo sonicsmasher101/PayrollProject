@@ -95,26 +95,24 @@ public class AccountHelper{
   *@param info to be added
   *@param file to add to
   */
-  public static void add(String info, File file){
-    try{
+  public static void add(String info, File file) throws FileNotFoundException{
     Scanner reader = new Scanner(file);
     PrintWriter writer = new PrintWriter(file);
     while(reader.hasNext()){
       writer.println(reader.next());
     }
     writer.println(info);
-	  }
-	  catch(FileNotFoundException e){}
-	  }
-  public Employee getEmployee(String name)
+}
+	
+  public int getEmployee(String name)
   {
-      Employee t = null;
+      int index = -1;
       for(int i=0; i<employees.size(); i++)
       {          
           if(name.equals(employees.get(i).getName()))
-          t=employees.get(i);
+          index = i;
       }
-      return t;
+      return index;
       
   }
 	  
