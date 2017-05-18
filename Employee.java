@@ -16,9 +16,8 @@ private long clockOutTime;
 private double payRate;
 private boolean clockable;
 private File file;
-public static ArrayList<Long> clockTimes;
+public ArrayList clockTimes;
 private Timer autoLogout;
-private int payIndex=-1;
 private boolean showMessage;
   
   /**
@@ -99,13 +98,17 @@ private boolean showMessage;
   }
   
   /**
-  *Gets the pay for the day for the employee
-  *@return the pay for the day
+  *Gets the pay for all the shifts worked by employee then removes those hours from the system for the employee
+  *@return pay for employee
   */
   public double getPay()
   {
-      payIndex++;
-    return ((clockTimes.get(payIndex))/60000)*payRate;
+    long hours = 0;
+    for(long element : clockTimes) hours += element;
+    for(int i = 0; i < clockTimes.length(); i++){
+    	clockTimes.remove(0);
+    }
+    return (double)(hours/60000) * payRate;
   }  
   
   /**
