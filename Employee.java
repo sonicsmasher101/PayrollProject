@@ -138,6 +138,13 @@ private boolean showMessage;
 
   	}
   }
+  
+   public String toString()
+  {
+  	return("Name: " + this.getName() + " ID: " + this.getID() + " Pay: " + this.getPay() + " Amount to Pay: " + this.getPay());
+  }
+ 
+ 
   TimerTask autoOut = new TimerTask () {
     @Override
     public void run () {
