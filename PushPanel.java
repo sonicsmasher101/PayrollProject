@@ -51,9 +51,7 @@ private JLabel succ;
 				}
 			}
 			JOptionPane.showMessageDialog(null, "Login Successful");
-                        t= helper.getEmployee(username);
-                        t.login();
-			
+                        helper.getEmployee(username).login();			
 		}
 	}
         
@@ -79,8 +77,7 @@ private JLabel succ;
 				JOptionPane.showMessageDialog(null, "Number not entered, please enter an integer", "Number not entered, please enter an integer", JOptionPane.WARNING_MESSAGE);
 				}
 			}
-                        t =helper.getEmployee(username);
-                        t.logout();
+                        helper.getEmployee(username).logout();
 			JOptionPane.showMessageDialog(null, "Logout Successful");
                         
 			
