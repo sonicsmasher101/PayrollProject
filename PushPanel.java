@@ -1,14 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package payroll;
-
-/**
- *
- * @author Yoga Mahartayasa
- */
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;;
@@ -132,27 +121,8 @@ private JLabel succ;
         private class AdminButtonListenerB implements ActionListener{
 		//Needs to be properly completed, error code may be incorrect
 		public void actionPerformed(ActionEvent event){
-			String username = "";
-			boolean cont = true;
-			while(!helper.getAdminUsername().equals(username) && cont){
-				username = JOptionPane.showInputDialog("Input username:");
-				if(username.equals("")) cont = false;
-			}
-
-			String pass = "";
-			String password = helper.getAdminPassword();
-			int count = 3;
-			while(!pass.equals(password) && count > 0){
-				pass = JOptionPane.showInputDialog("Enter password:");
-				count--;
-			}
-			if(count != 0){
                             JOptionPane.showMessageDialog(null, "Logout successful");
                             helper.getAdmin().logout();
-                            
-                        }
-			else JOptionPane.showMessageDialog(null, "Incorrect Password Entered Too Many Times", "Incorrect Password Entered Too Many Times", JOptionPane.ERROR_MESSAGE);
-			
 		}
 		
 	}
