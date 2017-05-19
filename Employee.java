@@ -2,6 +2,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JOptionPane;
 
 /**
 *Class to represent an Employee
@@ -16,7 +17,7 @@ private long clockOutTime;
 private double payRate;
 private boolean clockable;
 private File file;
-public ArrayList clockTimes;
+public ArrayList<Long> clockTimes;
 private Timer autoLogout;
 private boolean showMessage;
   
@@ -105,7 +106,7 @@ private boolean showMessage;
   {
     long hours = 0;
     for(long element : clockTimes) hours += element;
-    for(int i = 0; i < clockTimes.length(); i++){
+    for(int i = 0; i < clockTimes.size(); i++){
     	clockTimes.remove(0);
     }
     return (double)(hours/60000) * payRate;
