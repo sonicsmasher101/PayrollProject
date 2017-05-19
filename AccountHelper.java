@@ -108,15 +108,15 @@ public class AccountHelper{
   *Gives index of employee searched for, or -1 if they don't exist
   *@return index
   */
-  public int getEmployee(String name)
+  public Employee getEmployee(String name)
   {
-      int index = -1;
+	Employee e = null;
       for(int i=0; i<employees.size(); i++)
       {          
           if(name.equals(employees.get(i).getName()))
-          index = i;
+          e = employees.get(i);
       }
-      return index;
+      return e;
       
   }
 	
