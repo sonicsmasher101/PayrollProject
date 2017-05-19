@@ -4,6 +4,7 @@ import javax.swing.*;
 
 public class AdminPanel extends JPanel{
 private AccountHelper helper;
+private JButton logout;
 private JButton add;
 private JButton remove;
 private JButton calculate;
@@ -14,9 +15,11 @@ private JLabel succ;
     setPreferredSize(new Dimension(300, 400));
     setBackground(Color.DARK_GRAY);
     setMinimumSize(new Dimension(300, 400));
+    logout = new JButton("Logout");
     add = new JButton("Add Employee");
     remove = new JButton("Remove Employee");
     calculate = new JButton("Calculate Pay");
+    logout.addActionListener(new LogoutListener());
     add.addActionListener(new AddButtonListener());
     remove.addActionListener(new RemoveButtonListener());
     calculate.addActionListener(new CalculateButtonListener());
@@ -26,6 +29,7 @@ private JLabel succ;
     add(remove);
     add(calculate);
     add(succ);
+    add(logout);
   }
 
   private class AddButtonListener implements ActionListener{
@@ -62,6 +66,12 @@ private JLabel succ;
 	public void actionPerformed(ActionEvent event){
 		String employeeName = JOptionPane.showInputDialog("Name of employee to calculate pay for");
 	}
+  }
+	
+  private class LogoutListener implements ActionListener{
+	  public void actionPerformed(ActionEvent event){
+		  helper.getAdmin().logout();
+	  }
   }
   
 }
