@@ -103,7 +103,11 @@ public class AccountHelper{
     }
     writer.println(info);
 }
-	
+  
+  /**
+  *Gives index of employee searched for, or -1 if they don't exist
+  *@return index
+  */
   public int getEmployee(String name)
   {
       int index = -1;
@@ -115,6 +119,13 @@ public class AccountHelper{
       return index;
       
   }
-	  
+	
+  /**
+  *Gives the admin of the system
+  *@return admin
+  */
+  public Admin getAdmin(){
+	  return admin;
+  }
 
 }
