@@ -43,4 +43,9 @@ private String password;
 	public void logout(){
 	adminFrame.setVisible(false);
 	}
+	
+	public void addAdmin(String name, String pass)
+	{
+		Admin newAdd = new Admin(name,pass);
+	}
 }
