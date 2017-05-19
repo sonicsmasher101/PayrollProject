@@ -64,7 +64,14 @@ private JLabel succ;
 	
   private class CalculateButtonListener implements ActionListener{
 	public void actionPerformed(ActionEvent event){
-		String employeeName = JOptionPane.showInputDialog("Name of employee to calculate pay for");
+		String name = JOptionPane.showInputDialog("Name of employee to calculate pay for");
+		double pay = 0;
+		if(helper.checkUsername(name)){
+			pay = helper.getEmployee(name).getPay();
+			JOptionPane.showMessageDialog(null, name + "'s pay is: " + pay, name + "'s pay is: " + pay, JOptionPane.INFORMATION_MESSAGE);
+		}
+		else JOptionPane.showMessageDialog(null, name + " is not in the system, please try again", name + " is not in the system, please try again", JOptionPane.ERROR_MESSAGE);
+		
 	}
   }
 	
