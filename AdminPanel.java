@@ -70,6 +70,7 @@ private JLabel succ;
 	
   private class LogoutListener implements ActionListener{
 	  public void actionPerformed(ActionEvent event){
+		  JOptionPane.showMessageDialog(null, "Logged Out", "Logged Out", JOptionPane.INFORMATION_MESSAGE);
 		  helper.getAdmin().logout();
 	  }
   }
