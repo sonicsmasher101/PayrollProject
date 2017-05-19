@@ -7,7 +7,6 @@ private AccountHelper helper;
 private JButton eButton;
 private JButton aButton;
 private JButton eBButton;
-private JButton aBButton;
 private JLabel succ;
 	public PushPanel(AccountHelper helper){
 		this.helper = helper;
@@ -21,11 +20,9 @@ private JLabel succ;
 		eButton.addActionListener(new EmployeeButtonListener());
 		aButton.addActionListener(new AdminButtonListener());
                 eBButton.addActionListener(new EmployeeButtonListenerB());
-                aBButton.addActionListener(new AdminButtonListenerB());
 		add(eButton);
 		add(aButton);
                 add(eBButton);
-                add(aBButton);
 		succ.setIcon(new ImageIcon("src\\SUCC.jpg"));
 		succ.setText("SUCC");
 		add(succ);
@@ -117,13 +114,5 @@ private JLabel succ;
 		}
 		
 	}
-        
-        private class AdminButtonListenerB implements ActionListener{
-		//Needs to be properly completed, error code may be incorrect
-		public void actionPerformed(ActionEvent event){
-                            JOptionPane.showMessageDialog(null, "Logout successful");
-                            helper.getAdmin().logout();
-		}
-		
-	}
+
 }
