@@ -15,7 +15,6 @@ private JLabel succ;
 		eButton = new JButton("Employee Login");
                 eBButton = new JButton("Employee Logout");
                 aButton = new JButton("Admin Login");
-                aBButton = new JButton("Admin Logout");
 		succ = new JLabel();
 		eButton.addActionListener(new EmployeeButtonListener());
 		aButton.addActionListener(new AdminButtonListener());
