@@ -37,11 +37,11 @@ private String password;
 	*Logs in admin
 	*/
 	public void login(){
-	adminFrame.setVisible(true);
+	Main.adminFrame.setVisible(true);
 	}
 	
 	public void logout(){
-	adminFrame.setVisible(false);
+	Main.adminFrame.setVisible(false);
 	}
 
 }
