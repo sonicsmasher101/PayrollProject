@@ -94,12 +94,9 @@ public class AccountHelper{
   *@param file to add to
   */
   public static void add(String info, File file) throws FileNotFoundException{
-    Scanner reader = new Scanner(file);
-    PrintWriter writer = new PrintWriter(file);
-    while(reader.hasNext()){
-      writer.println(reader.next());
-    }
+    PrintWriter writer = new PrintWriter(new FileOutputStream(file, true));
     writer.println(info);
+    writer.close();
 }
   
   /**
