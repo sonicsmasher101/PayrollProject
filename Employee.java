@@ -1,4 +1,4 @@
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,12 +26,14 @@ private boolean showMessage;
   *@param Employee's username
   *@param Employee's password
   */
-  public Employee(String name, int id, double payR){
+  public Employee(String name, int id, double payR) throws FileNotFoundException{
     this.name = name;
     this.id = id;
     payRate = payR;
     clockable = true;
-    file = new File(name);
+    file = new File(name+".txt");
+    PrintWriter writer = new PrintWriter(file);
+    writer.println("Information for: " + name);
     autoLogout = new Timer();
     clockTimes = new ArrayList<Long>();
     showMessage = false;
