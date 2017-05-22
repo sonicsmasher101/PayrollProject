@@ -97,7 +97,7 @@ private JLabel succ;
            try{
            String name = JOptionPane.showInputDialog("Name of employee to add info");
            File eFile = helper.getEmployee(name).getFile();
-           PrintWriter writer = new PrintWriter(new FileOutputStream(eFile));
+           PrintWriter writer = new PrintWriter(new FileOutputStream(eFile, true));
            String info = JOptionPane.showInputDialog("Extra info about employee");
            writer.println(info);
            }
