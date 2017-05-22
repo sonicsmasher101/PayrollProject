@@ -5,18 +5,16 @@ public class Admin extends Main implements Worker
 {
 private String username;
 private String password;
-public static boolean shouldWrite;
 
 	/**
 	*Consructs an Admin
 	*@param user username
 	*@param pass password
 	*/
-	public Admin(String user, String pass, boolean write)
+	public Admin(String user, String pass)
 	{
 		username = user;
 		password = pass;
-		shouldWrite = write;
 	}
 	
 	/**
