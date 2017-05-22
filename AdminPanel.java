@@ -42,7 +42,12 @@ private JLabel succ;
 			//Add catch error stuff for int and double
 			id = Integer.parseInt(JOptionPane.showInputDialog("Input new employee's id"));
 			pay = Double.parseDouble(JOptionPane.showInputDialog("Input new employee's payrate"));
+			try{
 			helper.addEmployee(new Employee(name, id, pay));
+			}
+			catch(FileNotFoundException e){
+				System.err.prinln(e);
+			}
 		}
 	}
   
