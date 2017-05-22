@@ -16,8 +16,8 @@ public class AccountHelper{
   *@param Username for first admin
   *@param Password for first admin
   */
-  public AccountHelper(String username, String password){
-    admin = new Admin(username, password);
+  public AccountHelper(String username, String password, boolean write){
+    admin = new Admin(username, password, write);
     employeePasswords = new HashMap<String, Integer>();
     employees = new ArrayList<Employee>();
   }
