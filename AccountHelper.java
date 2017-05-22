@@ -65,6 +65,76 @@ public class AccountHelper{
    * @return The admin password
    */
   public String getAdminUsername(){
+import java.util.HashMap;
+import java.io.*;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import javax.swing.JOptionPane;
+
+public class AccountHelper{
+  private Admin admin;
+  private HashMap employeePasswords;
+  private ArrayList<Employee> employees;
+  
+  /**
+  *AccountHelper class that is simply meant to store usernames and password of admins and employees seperately.
+  *@param Username for first admin
+  *@param Password for first admin
+  */
+  public AccountHelper(String username, String password){
+    admin = new Admin(username, password);
+    employeePasswords = new HashMap<String, Integer>();
+    employees = new ArrayList<Employee>();
+  }
+  
+   /**
+  *Adds new admin to system
+  *@param Employee object of new employee
+  */
+  public void addEmployee(Employee e){
+    employeePasswords.put(e.getName(), (Integer)e.getID());
+    employees.add(e);
+  }
+	
+  /**
+  *Removes employee from system
+  *@param Name of employee to be removed
+  *@return True if employee was removed, false if employee wasn't found
+  */
+  
+  public boolean removeEmployee(String name){
+    boolean found = false;
+      if(checkUsername(name)){
+		for(int i=0; i<employees.size(); i++)
+                {
+                    if(name.equals(employees.get(i).getName())){
+                        employees.remove(i);
+                        employeePasswords.remove(name);
+                        found=true;
+                    }
+                }
+                }
+            return found;
+	}
+ 
+  
+  
+  
+  /**
+  *Gives password of the admin
+  *@return The admin username
+  */
+  public String getAdminPassword(){
+    return admin.getPassword();
+  }
+  
+  /**
+   *Gives username of the admin
+   * @return The admin password
+   */
+  public String getAdminUsername(){
 	return admin.getUsername();
   }
   
@@ -90,34 +160,34 @@ public class AccountHelper{
   *@param info to be added
   *@param file to add to
   */
-  public static void add(String info, File file) throws FileNotFoundException{
-    PrintWriter writer = new PrintWriter(new FileOutputStream(file, true));
-    writer.println(info);
+  public void addToFile(){
+    try{
+    String fileName=JOptionPane.showInputDialog("Enter employee name");
+    File file = new File(fileName+".txt");
+    PrintWriter writer = new PrintWriter(new FileOutputStream(file));
+    String eInfo=JOptionPane.showInputDialog("Enter employee info");
+    writer.println(eInfo);
     writer.close();
-}
+	  }
+	  catch(FileNotFoundException e){}
+	  }
   
-  /**
-  *Gives index of employee searched for, or -1 if they don't exist
-  *@return index
-  */
   public Employee getEmployee(String name)
   {
-	Employee e = null;
+      Employee t = null;
       for(int i=0; i<employees.size(); i++)
       {          
           if(name.equals(employees.get(i).getName()))
-          e = employees.get(i);
+          t=employees.get(i);
       }
-      return e;
+      return t;
       
   }
-	
-  /**
-  *Gives the admin of the system
-  *@return admin
-  */
-  public Admin getAdmin(){
-	  return admin;
+  
+  public Admin getAdmin()
+  {
+      return admin;
   }
+	  
 
 }
