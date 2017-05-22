@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.*;
 
 public class AdminPanel extends JPanel{
 private AccountHelper helper;
@@ -8,6 +9,7 @@ private JButton logout;
 private JButton add;
 private JButton remove;
 private JButton calculate;
+private JButton addMore;
 private JLabel succ;
 
   public AdminPanel(AccountHelper helper){
@@ -19,10 +21,12 @@ private JLabel succ;
     add = new JButton("Add Employee");
     remove = new JButton("Remove Employee");
     calculate = new JButton("Calculate Pay");
+    addMore= new JButton("Add extra employee info");
     logout.addActionListener(new LogoutListener());
     add.addActionListener(new AddButtonListener());
     remove.addActionListener(new RemoveButtonListener());
     calculate.addActionListener(new CalculateButtonListener());
+    addMore.addActionListener(new AddExtraListener());
     succ = new JLabel();
     succ.setIcon(new ImageIcon("src\\SUCC.gif"));
     add(add);
@@ -30,6 +34,7 @@ private JLabel succ;
     add(calculate);
     add(succ);
     add(logout);
+    add(addMore);
   }
 
   private class AddButtonListener implements ActionListener{
@@ -46,7 +51,7 @@ private JLabel succ;
 			helper.addEmployee(new Employee(name, id, pay));
 			}
 			catch(FileNotFoundException e){
-				System.err.prinln(e);
+				System.err.println(e);
 			}
 		}
 	}
@@ -86,5 +91,19 @@ private JLabel succ;
 		  helper.getAdmin().logout();
 	  }
   }
+  
+   private class AddExtraListener implements ActionListener{
+       public void actionPerformed(ActionEvent event){
+           try{
+           String name = JOptionPane.showInputDialog("Name of employee to add info");
+           File eFile = helper.getEmployee(name).getFile();
+           PrintWriter writer = new PrintWriter(new FileOutputStream(eFile));
+           String info = JOptionPane.showInputDialog("Extra info about employee");
+           writer.println(info);
+           }
+           catch(FileNotFoundException e){}
+           
+       }
+   }
   
 }
