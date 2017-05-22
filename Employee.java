@@ -145,6 +145,10 @@ private boolean showMessage;
   {
   	return("Name: " + this.getName() + " ID: " + this.getID() + " Pay: " + this.getPay() + " Amount to Pay: " + this.getPay());
   }
+   
+   public File getFile(){
+       return file;
+   }
  
  
   TimerTask autoOut = new TimerTask () {
