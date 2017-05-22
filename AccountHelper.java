@@ -1,10 +1,7 @@
 import java.util.HashMap;
-import java.io.File;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.io.IOException;
-import java.io.FileNotFoundException;
 
 public class AccountHelper{
   private Admin admin;
