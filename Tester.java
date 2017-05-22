@@ -1,8 +1,9 @@
 import java.util.Scanner;
+import java.io.FileNotFoundException;
 
 public class Tester{
   public static JFrame adminFrame;
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException{
     JFrame frame = new JFrame("Payroll Application");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(400, 400);
