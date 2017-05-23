@@ -32,7 +32,9 @@ private boolean showMessage;
     payRate = payR;
     clockable = true;
     file = new File(name+".txt");
-    add("Information for: " + name, file);
+    PrintWriter writer = new PrintWriter(file);
+    writer.println("");
+    AccountHelper.add(toString(), file);
     autoLogout = new Timer();
     clockTimes = new ArrayList<Long>();
     showMessage = false;
@@ -53,6 +55,14 @@ private boolean showMessage;
   public int getID(){
     return id;
   }
+  
+  /**
+   *Gives employee's payrate
+   *@return payrate
+   */
+   public double getPayrate(){
+     return payRate;
+   }
   
   /**
   *Clocks in Employee and refreshes clock out time
@@ -103,12 +113,12 @@ private boolean showMessage;
   *Gets the pay for all the shifts worked by employee then removes those hours from the system for the employee
   *@return pay for employee
   */
-  public double getPay()
+  public double getPay() throws FileNotFoundException
   {
     long hours = 0;
     for(long element : clockTimes) hours += element;
     for(int i = 0; i < clockTimes.size(); i++) clockTimes.remove(0);
-    add("Wages out: "+(hours/60000) * payRate,file);
+    AccountHelper.add("Wages out: "+(hours/60000) * payRate,file);
     return (double)(hours/60000) * payRate;
   }  
   
@@ -143,7 +153,7 @@ private boolean showMessage;
   
    public String toString()
   {
-  	return("Name: " + this.getName() + " ID: " + this.getID() + " Pay: " + this.getPay() + " Amount to Pay: " + this.getPay());
+  	return("Name: " + this.getName() + " ID: " + this.getID() + " Pay: " + this.getPayRate());
   }
    
    public File getFile(){
