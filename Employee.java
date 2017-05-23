@@ -32,8 +32,7 @@ private boolean showMessage;
     payRate = payR;
     clockable = true;
     file = new File(name+".txt");
-    PrintWriter writer = new PrintWriter(file);
-    writer.println("Information for: " + name);
+    add("Information for: " + name, file);
     autoLogout = new Timer();
     clockTimes = new ArrayList<Long>();
     showMessage = false;
@@ -109,6 +108,7 @@ private boolean showMessage;
     long hours = 0;
     for(long element : clockTimes) hours += element;
     for(int i = 0; i < clockTimes.size(); i++) clockTimes.remove(0);
+    add(""+(hours/60000) * payRate,file);
     return (double)(hours/60000) * payRate;
   }  
   
