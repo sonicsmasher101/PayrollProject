@@ -169,8 +169,19 @@ public class AccountHelper{
     writer.println(eInfo);
     writer.close();
 	  }
-	  catch(FileNotFoundException e){}
-	  }
+	  catch(FileNotFoundException e){System.err.println(e);}
+    }
+	
+ /**
+  *Universal method meant for adding on extra info into a file
+  *@param info to be added
+  *@param file to add to
+  */
+  public static void add(String info, File file) throws FileNotFoundException{
+    PrintWriter writer = new PrintWriter(new FileOutputStream(file, true));
+    writer.println(info);
+    writer.close();
+}
   
   public Employee getEmployee(String name)
   {
