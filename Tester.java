@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import javax.swing.*;
 import java.io.FileNotFoundException;
 
 public class Tester{
