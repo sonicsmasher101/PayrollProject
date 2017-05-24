@@ -10,6 +10,7 @@ private JButton add;
 private JButton remove;
 private JButton calculate;
 private JButton addMore;
+private JButton payChange;	
 private JLabel succ;
 private JTextField name;
 private JTextField id;
@@ -34,11 +35,13 @@ private JLabel payInfo;
     id = new JTextField(25);
     payInfo = new JLabel("Input payrate of new Employee:");
     pay = new JTextField(25);
+	  payChange=new JButton("Change pay of employee");
     logout.addActionListener(new LogoutListener());
     add.addActionListener(new AddButtonListener());
     remove.addActionListener(new RemoveButtonListener());
     calculate.addActionListener(new CalculateButtonListener());
     addMore.addActionListener(new AddExtraListener());
+	  payChange.addActionListener(new ChangePayListener());
     succ = new JLabel();
     succ.setIcon(new ImageIcon("SUCC.gif"));
     add(add);
@@ -123,6 +126,21 @@ private JLabel payInfo;
            }
            catch(FileNotFoundException e){}
            
+       }
+   }
+	
+	private class ChangePayListener implements ActionListener{
+       public void actionPerformed(ActionEvent event){
+           String name = JOptionPane.showInputDialog("Name of employee to change pay");
+           String pay = JOptionPane.showInputDialog("New pay of employee");
+           try{
+               Integer.parseInt(pay);
+	}
+            catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "Number not entered, please enter an integer", "Number not entered, please enter an integer", JOptionPane.WARNING_MESSAGE);
+            }
+           double newPay=Integer.parseInt(pay);
+           helper.getEmployee(name).changePay(newPay);
        }
    }
   
