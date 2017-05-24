@@ -56,6 +56,7 @@ private JLabel payInfo;
     add(payInfo);
     add(pay);
     add(succ);
+    add(payChange);
   }
 
   private class AddButtonListener implements ActionListener{
@@ -141,6 +142,11 @@ private JLabel payInfo;
             }
            double newPay=Integer.parseInt(pay);
            helper.getEmployee(name).changePay(newPay);
+           File file = helper.getEmployee(name).getFile();
+           try{
+           helper.add(helper.getEmployee(name).toString(),file);
+           }
+           catch(FileNotFoundException e){}
        }
    }
   
