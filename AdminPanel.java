@@ -11,36 +11,54 @@ private JButton remove;
 private JButton calculate;
 private JButton addMore;
 private JLabel succ;
+private JTextField name;
+private JTextField id;
+private JTextField pay;
+private JLabel nameInfo;
+private JLabel idInfo;
+private JLabel payInfo;
 
   public AdminPanel(AccountHelper helper){
     this.helper = helper;
-    setPreferredSize(new Dimension(300, 400));
-    setBackground(Color.DARK_GRAY);
-    setMinimumSize(new Dimension(300, 400));
+    setPreferredSize(new Dimension(300, 500));
+    setBackground(Color.PINK);
+    setMinimumSize(new Dimension(300, 500));
     logout = new JButton("Logout");
     add = new JButton("Add Employee");
     remove = new JButton("Remove Employee");
     calculate = new JButton("Calculate Pay");
     addMore= new JButton("Add extra employee info");
+    nameInfo = new JLabel("Input name of new Employee:");
+    name = new JTextField(25);
+    idInfo = new JLabel("Input id of new Employee:");
+    id = new JTextField(25);
+    payInfo = new JLabel("Input payrate of new Employee:");
+    pay = new JTextField(25);
     logout.addActionListener(new LogoutListener());
     add.addActionListener(new AddButtonListener());
     remove.addActionListener(new RemoveButtonListener());
     calculate.addActionListener(new CalculateButtonListener());
     addMore.addActionListener(new AddExtraListener());
     succ = new JLabel();
-    succ.setIcon(new ImageIcon("src\\SUCC.gif"));
+    succ.setIcon(new ImageIcon("SUCC.gif"));
     add(add);
     add(remove);
     add(calculate);
-    add(succ);
     add(logout);
     add(addMore);
+    add(nameInfo);
+    add(name);
+    add(idInfo);
+    add(id);
+    add(payInfo);
+    add(pay);
+    add(succ);
   }
 
   private class AddButtonListener implements ActionListener{
 		//Needs to be properly completed, error code may be incorrect
 		public void actionPerformed(ActionEvent event){
-      			String name;
+      		String name;
 			int id;
 			double pay;
 			name = JOptionPane.showInputDialog("Input new employee's name");
@@ -76,12 +94,14 @@ private JLabel succ;
 	public void actionPerformed(ActionEvent event){
 		String name = JOptionPane.showInputDialog("Name of employee to calculate pay for");
 		double pay = 0;
+		try{
 		if(helper.checkUsername(name)){
 			pay = helper.getEmployee(name).getPay();
 			JOptionPane.showMessageDialog(null, name + "'s pay is: " + pay, name + "'s pay is: " + pay, JOptionPane.INFORMATION_MESSAGE);
 		}
 		else JOptionPane.showMessageDialog(null, name + " is not in the system, please try again", name + " is not in the system, please try again", JOptionPane.ERROR_MESSAGE);
-		
+		}
+		catch(FileNotFoundException e){ System.err.println(e);}
 	}
   }
 	
