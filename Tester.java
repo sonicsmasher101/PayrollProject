@@ -2,12 +2,12 @@ import java.util.Scanner;
 import javax.swing.*;
 import java.io.FileNotFoundException;
 
-public class Tester{
+public class Main{
   public static JFrame adminFrame;
     public static void main(String[] args) throws FileNotFoundException{
     JFrame frame = new JFrame("Payroll Application");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setSize(400, 400);
+    frame.setSize(400, 350);
     frame.setLocationRelativeTo(null);
     ImageIcon icon = new ImageIcon("src\\SUCC.jpg");
     frame.setIconImage(icon.getImage());
@@ -15,7 +15,7 @@ public class Tester{
     AccountHelper Tarun = new AccountHelper("Tarun", "AD");
     adminFrame = new JFrame("Admin");
     adminFrame.add(new AdminPanel(Tarun));
-    adminFrame.setSize(400, 400);
+    adminFrame.setSize(400, 500);
     adminFrame.setLocationRelativeTo(null);
     adminFrame.setVisible(false);
     adminFrame.setResizable(false);
