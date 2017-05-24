@@ -43,7 +43,7 @@ private JLabel payInfo;
     addMore.addActionListener(new AddExtraListener());
 	  payChange.addActionListener(new ChangePayListener());
     succ = new JLabel();
-    succ.setIcon(new ImageIcon("SUCC.gif"));
+    succ.setIcon(new ImageIcon("src//SUCC.gif"));
     add(add);
     add(remove);
     add(calculate);
