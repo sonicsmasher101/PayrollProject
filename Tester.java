@@ -9,7 +9,7 @@ public class Main{
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(400, 350);
     frame.setLocationRelativeTo(null);
-    ImageIcon icon = new ImageIcon("src\\SUCC.jpg");
+    ImageIcon icon = new ImageIcon("SUCC.gif");
     frame.setIconImage(icon.getImage());
     frame.setResizable(false);
     AccountHelper Tarun = new AccountHelper("Tarun", "AD");
