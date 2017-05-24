@@ -32,6 +32,7 @@ private boolean showMessage;
     payRate = payR;
     clockable = true;
     file = new File(name+".txt");
+    file.setWritable(false);
     PrintWriter writer = new PrintWriter(file);
     writer.println("");
     AccountHelper.add(toString(), file);
