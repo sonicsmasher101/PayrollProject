@@ -10,20 +10,19 @@ private JButton eBButton;
 private JLabel succ;
 	public PushPanel(AccountHelper helper){
 		this.helper = helper;
-		setPreferredSize(new Dimension(300, 400));
-		setBackground(Color.DARK_GRAY);
+		setPreferredSize(new Dimension(300, 300));
+		setBackground(Color.ORANGE);
 		eButton = new JButton("Employee Login");
-                eBButton = new JButton("Employee Logout");
-                aButton = new JButton("Admin Login");
+        eBButton = new JButton("Employee Logout");
+        aButton = new JButton("Admin Login");
 		succ = new JLabel();
 		eButton.addActionListener(new EmployeeButtonListener());
 		aButton.addActionListener(new AdminButtonListener());
-                eBButton.addActionListener(new EmployeeButtonListenerB());
+        eBButton.addActionListener(new EmployeeButtonListenerB());
 		add(eButton);
 		add(aButton);
-                add(eBButton);
-		succ.setIcon(new ImageIcon("src\\SUCC.jpg"));
-		succ.setText("SUCC");
+        add(eBButton);
+		succ.setIcon(new ImageIcon("SUCC.gif"));
 		add(succ);
 	}
 	
