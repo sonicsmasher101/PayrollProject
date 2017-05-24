@@ -22,7 +22,7 @@ private JLabel succ;
 		add(eButton);
 		add(aButton);
         add(eBButton);
-		succ.setIcon(new ImageIcon("SUCC.gif"));
+		succ.setIcon(new ImageIcon("src//SUCC.gif"));
 		add(succ);
 	}
 	
