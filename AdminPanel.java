@@ -60,7 +60,7 @@ private JLabel payInfo;
   }
 
   private class AddButtonListener implements ActionListener{
-
+		
 	  public void actionPerformed(ActionEvent event){
 		  String eName = name.getText();
 		  name.setText(null);
@@ -83,17 +83,14 @@ private JLabel payInfo;
 			System.err.println(e);
 		  }
 		  try{
-			if(helper.checkUniqueID(eID)){
-                            helper.addEmployee(new Employee(eName, eID, ePay));
-                            JOptionPane.showMessageDialog(null, "Succesfully added employee!");
-                        }
-                        else{
-                            JOptionPane.showMessageDialog(null, "Employee with ID: " + eID + " already exists!");
-                        }
+			  if(helper.checkUsername(eName)) JOptionPane.showMessageDialog(null, "Employee name is already in system!");
+			  else JOptionPane.showMessageDialog(null, "Succesfully added employee!");
+			  if(!helper.checkUsername(eName)) helper.addEmployee(new Employee(eName, eID, ePay));
 			}
 		   catch (FileNotFoundException e) {
 			System.err.println(e);
 		}
+		  
 	  }
 	}
   
@@ -105,12 +102,9 @@ private JLabel payInfo;
           if(adminPass.equals(helper.getAdminPassword()))
           {
               if(helper.checkUsername(name)){
-                  try{
-		      helper.removeEmployee(name);
-                  }
-                  catch(FileNotFoundException e){}
-		      JOptionPane.showMessageDialog(null, "Employee removed!");
-	      }
+            	  helper.removeEmployee(name);
+            	  JOptionPane.showMessageDialog(null, "Employee removed!");
+              }
               else JOptionPane.showMessageDialog(null, "Employee name doesn't exist!", "Employee name doesn't exist!", JOptionPane.ERROR_MESSAGE);
           }
           else
@@ -124,14 +118,11 @@ private JLabel payInfo;
 	public void actionPerformed(ActionEvent event){
 		String name = JOptionPane.showInputDialog("Name of employee to calculate pay for");
 		double pay = 0;
-                try{
 		if(helper.checkUsername(name)){
 			pay = helper.getEmployee(name).getPay();
 			JOptionPane.showMessageDialog(null, name + "'s pay is: " + pay, name + "'s pay is: " + pay, JOptionPane.INFORMATION_MESSAGE);
 		}
 		else JOptionPane.showMessageDialog(null, name + " is not in the system, please try again", name + " is not in the system, please try again", JOptionPane.ERROR_MESSAGE);
-                }
-                catch(Exception e){}
 	}
   }
 	
@@ -151,7 +142,7 @@ private JLabel payInfo;
            String info = JOptionPane.showInputDialog("Extra info about employee");
            writer.println(info);
            }
-           catch(FileNotFoundException e){}
+           catch(FileNotFoundException e){System.err.println(e);}
            
        }
    }
