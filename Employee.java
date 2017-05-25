@@ -1,8 +1,7 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 import javax.swing.JOptionPane;
+import java.text.*;
 
 /**
 *Class to represent an Employee
@@ -19,6 +18,7 @@ private boolean clockable;
 private File file;
 public ArrayList<Long> clockTimes;
 private Timer autoLogout;
+private boolean showMessage;
   
   /**
   *Creates an Employee with username and password
@@ -33,9 +33,11 @@ private Timer autoLogout;
     file = new File(name+".txt");
     PrintWriter writer = new PrintWriter(file);
     writer.println("");
-    AccountHelper.add(toString(), file);
+    AccountHelper.add(toString(),file);
+    //file.setWritable(false);
     autoLogout = new Timer();
     clockTimes = new ArrayList<Long>();
+    showMessage = false;
   }
   
   /**
@@ -116,12 +118,14 @@ private Timer autoLogout;
     long hours = 0;
     for(long element : clockTimes) hours += element;
     for(int i = 0; i < clockTimes.size(); i++) clockTimes.remove(0);
-    AccountHelper.add("Wages out: "+(hours/60000) * payRate,file);
+    DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    Date date = new Date();
+    AccountHelper.add("Wages out at "+df.format(date)+" : "+(hours/60000) * payRate,file);
     return (double)(hours/60000) * payRate;
   }  
   
   /**
-  *Logs in employee and tracks time log in
+  *Logs in employee
   */
   public void login(){
   if(clockable){
@@ -129,13 +133,14 @@ private Timer autoLogout;
     	clockOutTime = clockInTime;
     	clockable = false;
 	autoLogout.schedule(autoOut,60000 * 8);
+	if(showMessage){
+			JOptionPane.showMessageDialog(null, "You have been logged in, please remember to logout at the right time next time");
+			showMessage = false;
+			}
    		} 
 
 }
 
-  /**
-   * logs out employee and tracks time that he or she logged out
-   */
   public void logout()
   {
   	if(!clockable){
@@ -148,30 +153,17 @@ private Timer autoLogout;
   	}
   }
   
-  /**
-   * returns employee data in a readable string format
-   * @return 
-   */
    public String toString()
   {
-  	return ("Name: " + this.getName() + " ID: " + this.getID() + " Pay: " + this.getPayrate());
+  	return("Name: " + this.getName() + " ID: " + this.getID() + " Pay: " + this.getPayrate());
   }
    
-   /**
-    * Gets the file associated with the employee
-    * @return the employee file
-    */
    public File getFile(){
        return file;
    }
    
-   /**
-    * Changes pay of the employee
-    * @param pay the new pay
-    */
-   public void changePay(double pay)
-   {
-       payRate=pay;
+   public void setWritability(boolean value){
+   	file.setWritable(value);
    }
  
  
@@ -179,7 +171,7 @@ private Timer autoLogout;
     @Override
     public void run () {
        logout();
-       JOptionPane.showMessageDialog(null, "You have been logged out automatically, please remember to logout at the right time next time");
+       showMessage = true;
     }
 };
 }
