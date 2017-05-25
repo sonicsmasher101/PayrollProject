@@ -19,7 +19,6 @@ private boolean clockable;
 private File file;
 public ArrayList<Long> clockTimes;
 private Timer autoLogout;
-private boolean showMessage;
   
   /**
   *Creates an Employee with username and password
@@ -32,13 +31,11 @@ private boolean showMessage;
     payRate = payR;
     clockable = true;
     file = new File(name+".txt");
-    file.setWritable(false);
     PrintWriter writer = new PrintWriter(file);
     writer.println("");
     AccountHelper.add(toString(), file);
     autoLogout = new Timer();
     clockTimes = new ArrayList<Long>();
-    showMessage = false;
   }
   
   /**
@@ -64,25 +61,12 @@ private boolean showMessage;
    public double getPayrate(){
      return payRate;
    }
-   
-   /**
-   *Gives employee's file
-   *@return payrate
-   */
-   public File getFile(){
-     return file;
-   }
-   
-   public void changePay(double newPay) {
-	payRate = newPay;
-   } 
   
   /**
   *Clocks in Employee and refreshes clock out time
   */
   public boolean clockIn(){
     if(clockable){
-    if(showMessage) JOptionPane.showMessageDialog(null, "WARNING: Make sure to clock out on time next time!", "WARNING: Make sure to clock out on time next time!", JOptionPane.ERROR_MESSAGE);
     clockInTime = System.currentTimeMillis();
     clockOutTime = clockInTime;
     clockable = false;
@@ -137,7 +121,7 @@ private boolean showMessage;
   }  
   
   /**
-  *Logs in employee
+  *Logs in employee and tracks time log in
   */
   public void login(){
   if(clockable){
@@ -145,14 +129,13 @@ private boolean showMessage;
     	clockOutTime = clockInTime;
     	clockable = false;
 	autoLogout.schedule(autoOut,60000 * 8);
-	if(showMessage){
-			JOptionPane.showMessageDialog(null, "You have been logged in, please remember to logout at the right time next time");
-			showMessage = false;
-			}
    		} 
 
 }
 
+  /**
+   * logs out employee and tracks time that he or she logged out
+   */
   public void logout()
   {
   	if(!clockable){
@@ -165,13 +148,30 @@ private boolean showMessage;
   	}
   }
   
+  /**
+   * returns employee data in a readable string format
+   * @return 
+   */
    public String toString()
   {
-  	return("Name: " + this.getName() + " ID: " + this.getID() + " Pay: " + this.getPayRate());
+  	return ("Name: " + this.getName() + " ID: " + this.getID() + " Pay: " + this.getPayrate());
   }
    
+   /**
+    * Gets the file associated with the employee
+    * @return the employee file
+    */
    public File getFile(){
        return file;
+   }
+   
+   /**
+    * Changes pay of the employee
+    * @param pay the new pay
+    */
+   public void changePay(double pay)
+   {
+       payRate=pay;
    }
  
  
@@ -179,7 +179,7 @@ private boolean showMessage;
     @Override
     public void run () {
        logout();
-       showMessage = true;
+       JOptionPane.showMessageDialog(null, "You have been logged out automatically, please remember to logout at the right time next time");
     }
 };
 }
