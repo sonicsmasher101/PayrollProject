@@ -104,7 +104,7 @@ private JLabel payInfo;
 		      helper.removeEmployee(name);
 		      JOptionPane.showMessageDialog(null, "Employee removed!");
 	      }
-              else JOptionPane.showMessageDialog(null, "Employee name doesn't exist!");
+              else JOptionPane.showMessageDialog(null, "Employee name doesn't exist!", "Employee name doesn't exist!", JOptionPane.ERROR_MESSAGE);
           }
           else
           {
