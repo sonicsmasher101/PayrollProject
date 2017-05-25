@@ -15,7 +15,7 @@ public class Main{
     frame.setResizable(false);
     AccountHelper Tarun = new AccountHelper("Tarun", "AD", true);
     Scanner in = new Scanner(new File("input.txt"));
-    	String temporary = null;
+    	String temporary = "";
     	if(in.hasNextLine()) temporary = in.nextLine().substring(4);
     	if(!temporary.equals("")){
     	String[] sections = temporary.split(" ");
