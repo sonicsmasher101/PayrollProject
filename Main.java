@@ -23,7 +23,7 @@ public class Main{
     adminFrame.setResizable(false);
     while(in.hasNext()){
       String[] inputs = in.next().split(",");
-      Tarun.add(new Employee(inputs[0], Integer.parseInt(inputs[1]), Double.parseDouble(inputs[2]));
+      Tarun.addEmployee(new Employee(inputs[0], Integer.parseInt(inputs[1]), Double.parseDouble(inputs[2])));
     }
     frame.add(new PushPanel(Tarun));
     frame.setVisible(true);
