@@ -78,6 +78,7 @@ private boolean showMessage;
   */
   public boolean clockIn(){
     if(clockable){
+    if(showMessage) JOptionPane.showMessageDialog(null, "WARNING: Make sure to clock out on time next time!", "WARNING: Make sure to clock out on time next time!", JOptionPane.ERROR_MESSAGE);
     clockInTime = System.currentTimeMillis();
     clockOutTime = clockInTime;
     clockable = false;
