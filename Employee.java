@@ -64,6 +64,14 @@ private boolean showMessage;
    public double getPayrate(){
      return payRate;
    }
+   
+   /**
+   *Gives employee's file
+   *@return payrate
+   */
+   public File getFile(){
+     return file;
+   }
   
   /**
   *Clocks in Employee and refreshes clock out time
