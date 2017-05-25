@@ -5,10 +5,6 @@ import java.io.*;
 public class Main{
   public static JFrame adminFrame;
     public static void main(String[] args) throws FileNotFoundException{
-    File input = new File("input.txt");
-    PrintWriter temp = new PrintWriter(input);
-    temp.print("");
-    Scanner in = new Scanner(input);
     JFrame frame = new JFrame("Payroll Application");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(400, 350);
@@ -23,10 +19,6 @@ public class Main{
     adminFrame.setLocationRelativeTo(null);
     adminFrame.setVisible(false);
     adminFrame.setResizable(false);
-    while(in.hasNext()){
-      String[] inputs = in.next().split(",");
-      Tarun.addEmployee(new Employee(inputs[0], Integer.parseInt(inputs[1]), Double.parseDouble(inputs[2])));
-    }
     frame.add(new PushPanel(Tarun));
     frame.setVisible(true);
   }
