@@ -100,7 +100,8 @@ private JLabel payInfo;
           String adminPass = JOptionPane.showInputDialog("Please enter admin password to continue");
           if(adminPass.equals(helper.getAdminPassword()))
           {
-              helper.removeEmployee(name);
+              if(helper.checkUsername(name)) helper.removeEmployee(name);
+              else JOptionPane.showMessageDialog(null, "Employee name doesn't exist!");
           }
           else
           {
