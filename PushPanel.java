@@ -96,7 +96,7 @@ private JLabel succ;
 			String password = helper.getAdminPassword();
 			int count = 3;
 			while(!pass.equals(password) && count > 0){
-				pass = JOptionPane.showInputDialog("Enter password:");
+				pass = JOptionPane.showInputDialog("Enter password: ("+count+" tries left)");
 				count--;
 			}
 			if(count != 0){
