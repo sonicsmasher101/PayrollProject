@@ -6,6 +6,8 @@ public class Main{
   public static JFrame adminFrame;
     public static void main(String[] args) throws FileNotFoundException{
     File input = new File("input.txt");
+    PrintWriter temp = new PrintWriter(input);
+    temp.print("");
     Scanner in = new Scanner(input);
     JFrame frame = new JFrame("Payroll Application");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
