@@ -60,22 +60,7 @@ private JLabel payInfo;
   }
 
   private class AddButtonListener implements ActionListener{
-		/*
-		public void actionPerformed(ActionEvent event){
-      		String name;
-			int id;
-			double pay;
-			name = JOptionPane.showInputDialog("Input new employee's name");
-			//Add catch error stuff for int and double
-			id = Integer.parseInt(JOptionPane.showInputDialog("Input new employee's id"));
-			pay = Double.parseDouble(JOptionPane.showInputDialog("Input new employee's payrate"));
-			try{
-			helper.addEmployee(new Employee(name, id, pay));
-			}
-			catch(FileNotFoundException e){
-				System.err.println(e);
-			}
-		}*/
+
 	  public void actionPerformed(ActionEvent event){
 		  String eName = name.getText();
 		  name.setText(null);
@@ -98,12 +83,13 @@ private JLabel payInfo;
 			System.err.println(e);
 		  }
 		  try{
-			helper.addEmployee(new Employee(eName, eID, ePay));
+			if(!helper.checkUsername(eName)) helper.addEmployee(new Employee(eName, eID, ePay));
 			}
 		   catch (FileNotFoundException e) {
 			System.err.println(e);
 		}
-		  JOptionPane.showMessageDialog(null, "Succesfully added employee!");
+		  if(helper.checkUsername(eName)) JOptionPane.showMessageDialog(null, "Employee " + eName + " already exists!");
+		  else JOptionPane.showMessageDialog(null, "Succesfully added employee!");
 	  }
 	}
   
