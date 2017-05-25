@@ -1,4 +1,3 @@
-
 import java.util.HashMap;
 import java.io.*;
 import java.util.Scanner;
@@ -38,12 +37,13 @@ public class AccountHelper{
   *@return True if employee was removed, false if employee wasn't found
   */
   
-  public boolean removeEmployee(String name){
+  public boolean removeEmployee(String name) throws FileNotFoundException{
     boolean found = false;
       if(checkUsername(name)){
 		for(int i=0; i<employees.size(); i++)
                 {
                     if(name.equals(employees.get(i).getName())){
+                        add("Employee was removed",getEmployee(name).getFile());
                         employees.remove(i);
                         employeePasswords.remove(name);
                         found=true;
@@ -117,6 +117,11 @@ public class AccountHelper{
     writer.close();
 }
   
+  /**
+   * Gets the employee from the employee array list
+   * @param name name of employee
+   * @return the employee wanted
+   */
   public Employee getEmployee(String name)
   {
       Employee t = null;
@@ -129,9 +134,23 @@ public class AccountHelper{
       
   }
   
+  /**
+   * returns the admin associated with this account
+   * @return the admin
+   */
   public Admin getAdmin()
   {
       return admin;
+  }
+  
+  public boolean checkUniqueID(double id)
+  {
+      for(int i=0; i<employees.size(); i++)
+      {
+          if(id==employees.get(i).getID())
+              return false;
+      }
+      return true;
   }
 	  
 
