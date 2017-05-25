@@ -60,7 +60,7 @@ private JLabel payInfo;
   }
 
   private class AddButtonListener implements ActionListener{
-		//Needs to be properly completed, error code may be incorrect
+		/*
 		public void actionPerformed(ActionEvent event){
       		String name;
 			int id;
@@ -75,7 +75,36 @@ private JLabel payInfo;
 			catch(FileNotFoundException e){
 				System.err.println(e);
 			}
+		}*/
+	  public void actionPerformed(ActionEvent event){
+		  String eName = name.getText();
+		  name.setText(null);
+		  int eID = 0;
+		  double ePay = 0;
+		  try{
+		  eID = Integer.parseInt(id.getText());
+		  id.setText(null);
+		  }
+		  catch(NumberFormatException e){
+			JOptionPane.showMessageDialog(null, "Error on adding employee, make sure id field is correct!", "Error on adding employee, make sure id field is correct!", JOptionPane.ERROR_MESSAGE);
+			System.err.println(e);
+		  }
+		  try{
+		  ePay = Double.parseDouble(pay.getText());
+		  pay.setText(null);
+		  }
+		  catch(NumberFormatException e){
+			JOptionPane.showMessageDialog(null, "Error on adding employee, make sure payrate field is correct!", "Error on adding employee, make sure payrate field is correct!", JOptionPane.ERROR_MESSAGE);
+			System.err.println(e);
+		  }
+		  try{
+			helper.addEmployee(new Employee(eName, eID, ePay));
+			}
+		   catch (FileNotFoundException e) {
+			System.err.println(e);
 		}
+		  JOptionPane.showMessageDialog(null, "Succesfully added employee!");
+	  }
 	}
   
   private class RemoveButtonListener implements ActionListener{
@@ -98,14 +127,11 @@ private JLabel payInfo;
 	public void actionPerformed(ActionEvent event){
 		String name = JOptionPane.showInputDialog("Name of employee to calculate pay for");
 		double pay = 0;
-		try{
 		if(helper.checkUsername(name)){
 			pay = helper.getEmployee(name).getPay();
 			JOptionPane.showMessageDialog(null, name + "'s pay is: " + pay, name + "'s pay is: " + pay, JOptionPane.INFORMATION_MESSAGE);
 		}
 		else JOptionPane.showMessageDialog(null, name + " is not in the system, please try again", name + " is not in the system, please try again", JOptionPane.ERROR_MESSAGE);
-		}
-		catch(FileNotFoundException e){ System.err.println(e);}
 	}
   }
 	
