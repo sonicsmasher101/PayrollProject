@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 public class AccountHelper{
   private Admin admin;
-  private HashMap employeePasswords;
+  private HashMap<String, Integer> employeePasswords;
   private ArrayList<Employee> employees;
   
   /**
