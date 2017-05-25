@@ -72,6 +72,10 @@ private boolean showMessage;
    public File getFile(){
      return file;
    }
+   
+   public void changePay(double newPay) {
+	payRate = newPay;
+   } 
   
   /**
   *Clocks in Employee and refreshes clock out time
