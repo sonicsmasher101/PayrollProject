@@ -10,8 +10,8 @@ private JButton eBButton;
 private JLabel succ;
 	public PushPanel(AccountHelper helper){
 		this.helper = helper;
-		setPreferredSize(new Dimension(300, 300));
-		setBackground(Color.ORANGE);
+		setPreferredSize(new Dimension(300, 400));
+		setBackground(Color.DARK_GRAY);
 		eButton = new JButton("Employee Login");
         eBButton = new JButton("Employee Logout");
         aButton = new JButton("Admin Login");
@@ -22,7 +22,7 @@ private JLabel succ;
 		add(eButton);
 		add(aButton);
         add(eBButton);
-		succ.setIcon(new ImageIcon("src//SUCC.gif"));
+		succ.setIcon(new ImageIcon("src\\SUCC.gif"));
 		add(succ);
 	}
 	
@@ -97,7 +97,6 @@ private JLabel succ;
 			int count = 3;
 			while(!pass.equals(password) && count > 0){
 				pass = JOptionPane.showInputDialog("Enter password: ("+count+" tries left)");
-				if(!pass.equals(password))
 				count--;
 			}
 			if(count != 0){
