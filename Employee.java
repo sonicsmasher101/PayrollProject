@@ -1,7 +1,8 @@
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JOptionPane;
-import java.text.*;
 
 /**
 *Class to represent an Employee
@@ -24,6 +25,8 @@ private boolean showMessage;
   *Creates an Employee with username and password
   *@param Employee's username
   *@param Employee's password
+  *@param Employee's payrate
+ * @throws FileNotFoundException 
   */
   public Employee(String name, int id, double payR) throws FileNotFoundException{
     this.name = name;
@@ -32,13 +35,43 @@ private boolean showMessage;
     clockable = true;
     file = new File(name+".txt");
     PrintWriter writer = new PrintWriter(file);
-    writer.println("");
-    AccountHelper.add(toString(),file);
-    //file.setWritable(false);
+    writer.print("");
+    writer.println("Information for: " + name);
     autoLogout = new Timer();
     clockTimes = new ArrayList<Long>();
     showMessage = false;
   }
+  
+  /**
+   *Creates an Employee with username and password
+   *@param Employee's username
+   *@param Employee's password
+   *@param Employee's payrate
+   *@param Employee's previous clocktime
+  * @throws FileNotFoundException 
+   */
+   public Employee(String name, int id, double payR, long clock) throws FileNotFoundException{
+     this.name = name;
+     this.id = id;
+     payRate = payR;
+     clockable = true;
+     file = new File(name+".txt");
+     PrintWriter writer = new PrintWriter(file);
+     writer.println("Information for: " + name);
+     autoLogout = new Timer();
+     clockTimes = new ArrayList<Long>();
+     showMessage = false;
+     clockInTime = clock;
+     if(System.currentTimeMillis() >= clockInTime + (60000*8) && clockInTime != 0){
+    	 clockOutTime = clockInTime + (60000*8);
+    	 clockable = false;
+    	 clockOut();
+     }
+     else if(clockInTime > 0){
+    	 clockable = false;
+    	 autoLogout.schedule(autoOut,(60000 * 8)*System.currentTimeMillis()-clockInTime);
+     }
+   }
   
   /**
   *Gives employee's name
@@ -57,11 +90,19 @@ private boolean showMessage;
   }
   
   /**
-   *Gives employee's payrate
-   *@return payrate
+   *Gives employee's file
+   *@return file
    */
+   public File getFile(){
+     return file;
+   }
+   
+   /**
+    * Gives employee's payrate
+    * @return payrate
+    */
    public double getPayrate(){
-     return payRate;
+	   return payRate;
    }
   
   /**
@@ -69,6 +110,7 @@ private boolean showMessage;
   */
   public boolean clockIn(){
     if(clockable){
+    if(showMessage) JOptionPane.showMessageDialog(null, "WARNING: Make sure to clock out on time next time!", "WARNING: Make sure to clock out on time next time!", JOptionPane.ERROR_MESSAGE);
     clockInTime = System.currentTimeMillis();
     clockOutTime = clockInTime;
     clockable = false;
@@ -80,12 +122,14 @@ private boolean showMessage;
   
   /**
   *Clocks out Employee
+ * @throws FileNotFoundException 
   */
-  public boolean clockOut(){
+  public boolean clockOut() throws FileNotFoundException{
     if(!clockable){
     clockOutTime = System.currentTimeMillis();
     clockTimes.add(clockOutTime - clockInTime);
     clockable = true;
+    AccountHelper.add(""+(clockOutTime - clockInTime), file);
     clockOutTime = 0;
     clockInTime = 0;
     return true;
@@ -113,14 +157,11 @@ private boolean showMessage;
   *Gets the pay for all the shifts worked by employee then removes those hours from the system for the employee
   *@return pay for employee
   */
-  public double getPay() throws FileNotFoundException
+  public double getPay()
   {
     long hours = 0;
     for(long element : clockTimes) hours += element;
     for(int i = 0; i < clockTimes.size(); i++) clockTimes.remove(0);
-    DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    Date date = new Date();
-    AccountHelper.add("Wages out at "+df.format(date)+" : "+(hours/60000) * payRate,file);
     return (double)(hours/60000) * payRate;
   }  
   
@@ -155,16 +196,8 @@ private boolean showMessage;
   
    public String toString()
   {
-  	return("Name: " + this.getName() + " ID: " + this.getID() + " Pay: " + this.getPayrate());
+  	return(this.getName() + "," + this.getID() + "," + this.getPayrate() + "," + this.getClockInTime());
   }
-   
-   public File getFile(){
-       return file;
-   }
-   
-   public void setWritability(boolean value){
-   	file.setWritable(value);
-   }
  
  
   TimerTask autoOut = new TimerTask () {
@@ -174,4 +207,9 @@ private boolean showMessage;
        showMessage = true;
     }
 };
+
+public void changePay(double newPay) {
+	payRate = newPay;
+	
+}
 }
