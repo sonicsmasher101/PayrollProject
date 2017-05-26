@@ -1,4 +1,4 @@
-import java.util.*;  
+import java.util.*;   
 import javax.swing.*;
 import java.io.*;
 import java.awt.event.*;
@@ -10,13 +10,12 @@ public class Main{
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(400, 400);
     frame.setLocationRelativeTo(null);
-    ImageIcon icon = new ImageIcon("src\\SUCC.jpg");
+    ImageIcon icon = new ImageIcon("SUCC.jpg");
     frame.setIconImage(icon.getImage());
     frame.setResizable(false);
     AccountHelper Tarun = new AccountHelper("Tarun", "AD");
     Scanner in = new Scanner(new File("input.txt"));
     	String temporary = "";
-      //Substring starting at 4 because null is always put at beggining of file
     	if(in.hasNextLine()) temporary = in.nextLine().substring(4);
     	if(!temporary.equals("")){
     	String[] sections = temporary.split(" ");
@@ -28,13 +27,12 @@ public class Main{
     in.close();
     adminFrame = new JFrame("Admin");
     adminFrame.add(new AdminPanel(Tarun));
-    adminFrame.setSize(400, 400);
+    adminFrame.setSize(400, 500);
     adminFrame.setLocationRelativeTo(null);
     adminFrame.setVisible(false);
     adminFrame.setResizable(false);
     frame.add(new PushPanel(Tarun));
     PrintWriter writer = new PrintWriter("input.txt");
-    //Allows for a closing operation that adds all employees as information into input.txt file for reading upton restart of program
     frame.addWindowListener(new WindowAdapter() {
  	   public void windowClosing(WindowEvent event) {
  		 String list = null;
