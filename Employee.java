@@ -106,7 +106,7 @@ private boolean showMessage;
    }
   
   /**
-  *Clocks in Employee and refreshes clock out time
+  *Clocks in Employee
   */
   public boolean clockIn(){
     if(clockable){
@@ -121,8 +121,8 @@ private boolean showMessage;
   }
   
   /**
-  *Clocks out Employee
- * @throws FileNotFoundException 
+  *Clocks out Employee adding info to their file
+  *@throws FileNotFoundException 
   */
   public boolean clockOut() throws FileNotFoundException{
     if(!clockable){
@@ -175,13 +175,15 @@ private boolean showMessage;
     	clockable = false;
 	autoLogout.schedule(autoOut,60000 * 8);
 	if(showMessage){
-			JOptionPane.showMessageDialog(null, "You have been logged in, please remember to logout at the right time next time");
-			showMessage = false;
-			}
-   		} 
-
-}
-
+		JOptionPane.showMessageDialog(null, "You have been logged in, please remember to logout at the right time next time");
+		showMessage = false;
+		}
+   	} 
+   }
+  
+  /**
+  *Logs out employee
+  */
   public void logout()
   {
   	if(!clockable){
@@ -193,13 +195,15 @@ private boolean showMessage;
 
   	}
   }
-  
+  /**
+  *Puts employee in string format
+  */
    public String toString()
   {
   	return(this.getName() + "," + this.getID() + "," + this.getPayrate() + "," + this.getClockInTime());
   }
  
- 
+ //Allows for auto clockout after 8 'hours'
   TimerTask autoOut = new TimerTask () {
     @Override
     public void run () {
@@ -207,7 +211,10 @@ private boolean showMessage;
        showMessage = true;
     }
 };
-
+/**
+*Edits employee payrate
+*@param new payrate
+*/
 public void changePay(double newPay) {
 	payRate = newPay;
 	
