@@ -13,7 +13,7 @@ public class Main{
     ImageIcon icon = new ImageIcon("src\\SUCC.jpg");
     frame.setIconImage(icon.getImage());
     frame.setResizable(false);
-    AccountHelper Tarun = new AccountHelper("Tarun", "AD", true);
+    AccountHelper Tarun = new AccountHelper("Tarun", "AD");
     Scanner in = new Scanner(new File("input.txt"));
     	String temporary = "";
       //Substring starting at 4 because null is always put at beggining of file
