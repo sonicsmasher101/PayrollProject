@@ -39,7 +39,9 @@ private String password;
 	public void login(){
 	Main.adminFrame.setVisible(true);
 	}
-	
+	/**
+	*Logs out admin
+	*/
 	public void logout(){
 	Main.adminFrame.setVisible(false);
 	}
