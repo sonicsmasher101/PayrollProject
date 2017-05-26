@@ -3,6 +3,9 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
 
+/**
+*Adminpanel viewable once admin logs in
+*/
 public class AdminPanel extends JPanel{
 private AccountHelper helper;
 private JButton logout;
@@ -18,7 +21,10 @@ private JTextField pay;
 private JLabel nameInfo;
 private JLabel idInfo;
 private JLabel payInfo;
-
+  /**
+  *Creates adminpanel
+  *@param accounthelper
+  */
   public AdminPanel(AccountHelper helper){
     this.helper = helper;
     setPreferredSize(new Dimension(300, 500));
@@ -58,7 +64,10 @@ private JLabel payInfo;
     add(pay);
     add(succ);
   }
-
+  
+  /**
+  *Listener for add employee
+  */
   private class AddButtonListener implements ActionListener{
 		
 	  public void actionPerformed(ActionEvent event){
@@ -103,7 +112,9 @@ private JLabel payInfo;
 		  
 	  }
 	}
-  
+  /**
+  *Listener for remove employee
+  */
   private class RemoveButtonListener implements ActionListener{
       public void actionPerformed(ActionEvent event)
       {
@@ -123,7 +134,9 @@ private JLabel payInfo;
           }
       }
   }
-	
+  /**
+  *Listener for calculate employee pay
+  */
   private class CalculateButtonListener implements ActionListener{
 	public void actionPerformed(ActionEvent event){
 		String name = JOptionPane.showInputDialog("Name of employee to calculate pay for");
@@ -135,7 +148,9 @@ private JLabel payInfo;
 		else JOptionPane.showMessageDialog(null, name + " is not in the system, please try again", name + " is not in the system, please try again", JOptionPane.ERROR_MESSAGE);
 	}
   }
-	
+  /**
+  *Listener for admin logout
+  */	
   private class LogoutListener implements ActionListener{
 	  public void actionPerformed(ActionEvent event){
 		  JOptionPane.showMessageDialog(null, "Logged Out", "Logged Out", JOptionPane.INFORMATION_MESSAGE);
@@ -143,6 +158,9 @@ private JLabel payInfo;
 	  }
   }
   
+  /**
+  *Listener for add extra info for employee
+  */
    private class AddExtraListener implements ActionListener{
        public void actionPerformed(ActionEvent event){
            try{
@@ -156,8 +174,10 @@ private JLabel payInfo;
            
        }
    }
-	
-	private class ChangePayListener implements ActionListener{
+  /**
+  *Listener for change employee pay
+  */	
+  private class ChangePayListener implements ActionListener{
        public void actionPerformed(ActionEvent event){
            String name = JOptionPane.showInputDialog("Name of employee to change pay");
            String pay = JOptionPane.showInputDialog("New pay of employee");
