@@ -179,6 +179,8 @@ private boolean showMessage;
 		showMessage = false;
 		}
    	} 
+	else JOptionPane.showMessageDialog(null, "You haven't clocked out yet!");
+
    }
   
   /**
@@ -194,6 +196,8 @@ private boolean showMessage;
     clockInTime = 0;
 
   	}
+	else JOptionPane.showMessageDialog(null, "You haven't clocked in yet!");
+
   }
   /**
   *Puts employee in string format
