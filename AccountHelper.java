@@ -89,22 +89,6 @@ public class AccountHelper{
     return employeePasswords.containsKey(user);
   }
   
-  /**
-  *Universal method meant for adding on extra info into a file
-  *@param info to be added
-  *@param file to add to
-  */
-  public void addToFile(){
-    try{
-    String fileName=JOptionPane.showInputDialog("Enter employee name");
-    File file = new File(fileName+".txt");
-    PrintWriter writer = new PrintWriter(new FileOutputStream(file));
-    String eInfo=JOptionPane.showInputDialog("Enter employee info");
-    writer.println(eInfo);
-    writer.close();
-	  }
-	  catch(FileNotFoundException e){System.err.println(e);}
-    }
 	
  /**
   *Universal method meant for adding on extra info into a file
