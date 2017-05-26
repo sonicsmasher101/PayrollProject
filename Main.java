@@ -16,6 +16,7 @@ public class Main{
     AccountHelper Tarun = new AccountHelper("Tarun", "AD", true);
     Scanner in = new Scanner(new File("input.txt"));
     	String temporary = "";
+      //Substring starting at 4 because null is always put at beggining of file
     	if(in.hasNextLine()) temporary = in.nextLine().substring(4);
     	if(!temporary.equals("")){
     	String[] sections = temporary.split(" ");
@@ -33,6 +34,7 @@ public class Main{
     adminFrame.setResizable(false);
     frame.add(new PushPanel(Tarun));
     PrintWriter writer = new PrintWriter("input.txt");
+    //Allows for a closing operation that adds all employees as information into input.txt file for reading upton restart of program
     frame.addWindowListener(new WindowAdapter() {
  	   public void windowClosing(WindowEvent event) {
  		 String list = null;
