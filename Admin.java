@@ -40,6 +40,9 @@ private String password;
 	Main.adminFrame.setVisible(true);
 	}
 	
+	/**
+	*Logs out admin
+	*/
 	public void logout(){
 	Main.adminFrame.setVisible(false);
 	}
