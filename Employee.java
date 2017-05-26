@@ -162,7 +162,7 @@ private boolean showMessage;
     long hours = 0;
     for(long element : clockTimes) hours += element;
     for(int i = 0; i < clockTimes.size(); i++) clockTimes.remove(0);
-    return (double)(hours/60000) * payRate;
+    return (double)(hours/60000.0) * payRate;
   }  
   
   /**
