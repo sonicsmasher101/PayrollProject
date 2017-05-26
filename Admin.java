@@ -1,7 +1,7 @@
 /**
 *Class used to represent an Admin
 */
-public class Admin extends Main implements Worker
+public class Admin implements Worker
 {
 private String username;
 private String password;
@@ -39,9 +39,7 @@ private String password;
 	public void login(){
 	Main.adminFrame.setVisible(true);
 	}
-	/**
-	*Logs out admin
-	*/
+	
 	public void logout(){
 	Main.adminFrame.setVisible(false);
 	}
