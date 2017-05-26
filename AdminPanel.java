@@ -28,14 +28,14 @@ private JLabel payInfo;
     add = new JButton("Add Employee");
     remove = new JButton("Remove Employee");
     calculate = new JButton("Calculate Pay");
-    addMore= new JButton("Add extra employee info");
+    addMore= new JButton("Add info");
     nameInfo = new JLabel("Input name of new Employee:");
     name = new JTextField(25);
     idInfo = new JLabel("Input id of new Employee:");
     id = new JTextField(25);
     payInfo = new JLabel("Input payrate of new Employee:");
     pay = new JTextField(25);
-	  payChange=new JButton("Change pay of employee");
+	  payChange=new JButton("Change employee pay");
     logout.addActionListener(new LogoutListener());
     add.addActionListener(new AddButtonListener());
     remove.addActionListener(new RemoveButtonListener());
@@ -49,6 +49,7 @@ private JLabel payInfo;
     add(calculate);
     add(logout);
     add(addMore);
+    add(payChange);
     add(nameInfo);
     add(name);
     add(idInfo);
@@ -56,7 +57,6 @@ private JLabel payInfo;
     add(payInfo);
     add(pay);
     add(succ);
-    add(payChange);
   }
 
   private class AddButtonListener implements ActionListener{
@@ -167,7 +167,7 @@ private JLabel payInfo;
             catch(NumberFormatException e){
                 JOptionPane.showMessageDialog(null, "Number not entered, please enter an integer", "Number not entered, please enter an integer", JOptionPane.WARNING_MESSAGE);
             }
-           double newPay=Integer.parseInt(pay);
+           double newPay=Double.parseDouble(pay);
            helper.getEmployee(name).changePay(newPay);
            File file = helper.getEmployee(name).getFile();
            try{
