@@ -58,7 +58,7 @@ public class AccountHelper{
   
   /**
   *Gives password of the admin
-  *@return The admin username
+  *@return The admin password
   */
   public String getAdminPassword(){
     return admin.getPassword();
@@ -66,7 +66,7 @@ public class AccountHelper{
   
   /**
    *Gives username of the admin
-   * @return The admin password
+   * @return The admin username
    */
   public String getAdminUsername(){
 	return admin.getUsername();
@@ -103,7 +103,7 @@ public class AccountHelper{
   
   /**
    * Gets the employee from the employee array list
-   * @param name name of employee
+   * @param name of employee
    * @return the employee wanted
    */
   public Employee getEmployee(String name)
@@ -119,14 +119,18 @@ public class AccountHelper{
   }
   
   /**
-   * returns the admin associated with this account
-   * @return the admin
+   * Returns the admin associated with this account
+   * @return admin
    */
   public Admin getAdmin()
   {
       return admin;
   }
   
+  /**
+  *Unimplemented method for checkinng employee's id
+  *@return existence of id
+  */
   public boolean checkUniqueID(double id)
   {
       for(int i=0; i<employees.size(); i++)
