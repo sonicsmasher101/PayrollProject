@@ -97,6 +97,7 @@ private JLabel succ;
 			int count = 3;
 			while(!pass.equals(password) && count > 0){
 				pass = JOptionPane.showInputDialog("Enter password: ("+count+" tries left)");
+				if(!pass.equals(password))
 				count--;
 			}
 			if(count != 0){
