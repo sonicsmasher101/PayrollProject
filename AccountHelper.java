@@ -1,6 +1,9 @@
 import java.io.*;
 import java.util.*;
 
+/**
+*Makes accounthelper that stores all information on employees and the admin
+*/
 public class AccountHelper{
   private Admin admin;
   private HashMap<String, Integer> employeePasswords;
@@ -19,14 +22,14 @@ public class AccountHelper{
   
   /**
    * Gives whole arraylist of employees
-   * @return employes
+   * @return employees
    */
   public ArrayList<Employee> getEmployees(){
 	  return employees;
   }
   
    /**
-  *Adds new admin to system
+  *Adds new employee to system
   *@param Employee object of new employee
   */
   public void addEmployee(Employee e){
@@ -60,7 +63,7 @@ public class AccountHelper{
   
   /**
   *Gives password of the admin
-  *@return The admin username
+  *@return The admin password
   */
   public String getAdminPassword(){
     return admin.getPassword();
@@ -68,7 +71,7 @@ public class AccountHelper{
   
   /**
    *Gives username of the admin
-   * @return The admin password
+   * @return The admin username
    */
   public String getAdminUsername(){
 	return admin.getUsername();
@@ -76,7 +79,7 @@ public class AccountHelper{
   
   /**
   *Gives password of an employee given their username if the username exists, will return null otherwise
-  *@param The employee username
+  *@param The employee id
   */
   public int getID(String user){
     if(checkUsername(user)) return (Integer) employeePasswords.get(user);
@@ -103,8 +106,8 @@ public class AccountHelper{
 }
   
   /**
-  *Gives index of employee searched for, or -1 if they don't exist
-  *@return index
+  *Gives employee based on their name
+  *@return employee
   */
   public Employee getEmployee(String name)
   {
