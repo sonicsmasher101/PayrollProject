@@ -70,6 +70,11 @@ private JLabel payInfo;
 		
 	  public void actionPerformed(ActionEvent event){
 		  String eName = name.getText();
+		  boolean shouldAdd = true;
+		  if (eName.equals("")){
+			  JOptionPane.showMessageDialog(null, "Name not entered!", "Name not entered!", JOptionPane.ERROR_MESSAGE);
+			  shouldAdd = false;
+		  }
 		  name.setText(null);
 		  int eID = 0;
 		  double ePay = 0;
@@ -80,6 +85,7 @@ private JLabel payInfo;
 		  catch(NumberFormatException e){
 			JOptionPane.showMessageDialog(null, "Error on adding employee, make sure id field is correct!", "Error on adding employee, make sure id field is correct!", JOptionPane.ERROR_MESSAGE);
 			System.err.println(e);
+			shouldAdd = false;
 		  }
 		  try{
 		  ePay = Double.parseDouble(pay.getText());
@@ -88,10 +94,11 @@ private JLabel payInfo;
 		  catch(NumberFormatException e){
 			JOptionPane.showMessageDialog(null, "Error on adding employee, make sure payrate field is correct!", "Error on adding employee, make sure payrate field is correct!", JOptionPane.ERROR_MESSAGE);
 			System.err.println(e);
+			shouldAdd = false;
 		  }
 		  try{
 			  if(helper.checkUsername(eName)) JOptionPane.showMessageDialog(null, "Employee name is already in system!");
-			  else JOptionPane.showMessageDialog(null, "Succesfully added employee!");
+			  else if(shouldAdd) JOptionPane.showMessageDialog(null, "Succesfully added employee!");
 			  if(!helper.checkUsername(eName)) helper.addEmployee(new Employee(eName, eID, ePay));
 			}
 		   catch (FileNotFoundException e) {
@@ -99,7 +106,7 @@ private JLabel payInfo;
 		}
 		  
 	  }
-	}
+  }
   /**
   *Listener for remove employee button
   */
