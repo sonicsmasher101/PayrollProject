@@ -1,10 +1,5 @@
-import java.util.HashMap;
 import java.io.*;
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.io.IOException;
-import java.io.FileNotFoundException;
-import javax.swing.JOptionPane;
+import java.util.*;
 
 public class AccountHelper{
   private Admin admin;
@@ -16,10 +11,18 @@ public class AccountHelper{
   *@param Username for first admin
   *@param Password for first admin
   */
-  public AccountHelper(String username, String password){
-    admin = new Admin(username, password);
+  public AccountHelper(String username, String password, boolean write){
+    admin = new Admin(username, password, write);
     employeePasswords = new HashMap<String, Integer>();
     employees = new ArrayList<Employee>();
+  }
+  
+  /**
+   * Gives whole arraylist of employees
+   * @return employes
+   */
+  public ArrayList<Employee> getEmployees(){
+	  return employees;
   }
   
    /**
@@ -37,13 +40,12 @@ public class AccountHelper{
   *@return True if employee was removed, false if employee wasn't found
   */
   
-  public boolean removeEmployee(String name) throws FileNotFoundException{
+  public boolean removeEmployee(String name){
     boolean found = false;
       if(checkUsername(name)){
 		for(int i=0; i<employees.size(); i++)
                 {
                     if(name.equals(employees.get(i).getName())){
-                        add("Employee was removed",getEmployee(name).getFile());
                         employees.remove(i);
                         employeePasswords.remove(name);
                         found=true;
@@ -58,7 +60,7 @@ public class AccountHelper{
   
   /**
   *Gives password of the admin
-  *@return The admin password
+  *@return The admin username
   */
   public String getAdminPassword(){
     return admin.getPassword();
@@ -66,7 +68,7 @@ public class AccountHelper{
   
   /**
    *Gives username of the admin
-   * @return The admin username
+   * @return The admin password
    */
   public String getAdminUsername(){
 	return admin.getUsername();
@@ -89,8 +91,7 @@ public class AccountHelper{
     return employeePasswords.containsKey(user);
   }
   
-	
- /**
+  /**
   *Universal method meant for adding on extra info into a file
   *@param info to be added
   *@param file to add to
@@ -102,44 +103,27 @@ public class AccountHelper{
 }
   
   /**
-   * Gets the employee from the employee array list
-   * @param name of employee
-   * @return the employee wanted
-   */
+  *Gives index of employee searched for, or -1 if they don't exist
+  *@return index
+  */
   public Employee getEmployee(String name)
   {
-      Employee t = null;
+	Employee e = null;
       for(int i=0; i<employees.size(); i++)
       {          
           if(name.equals(employees.get(i).getName()))
-          t=employees.get(i);
+          e = employees.get(i);
       }
-      return t;
+      return e;
       
   }
-  
+	
   /**
-   * Returns the admin associated with this account
-   * @return admin
-   */
-  public Admin getAdmin()
-  {
-      return admin;
-  }
-  
-  /**
-  *Unimplemented method for checkinng employee's id
-  *@return existence of id
+  *Gives the admin of the system
+  *@return admin
   */
-  public boolean checkUniqueID(double id)
-  {
-      for(int i=0; i<employees.size(); i++)
-      {
-          if(id==employees.get(i).getID())
-              return false;
-      }
-      return true;
+  public Admin getAdmin(){
+	  return admin;
   }
-	  
 
 }
