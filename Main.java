@@ -14,7 +14,7 @@ public class Main{
     frame.setIconImage(icon.getImage());
     frame.setResizable(false);
     AccountHelper Tarun = new AccountHelper("Tarun", "AD");
-    Scanner in = new Scanner(new File("input.txt"));
+    Scanner in = new Scanner(new File("src\\input.txt"));
     	String temporary = "";
     	if(in.hasNextLine()) temporary = in.nextLine().substring(4);
     	if(!temporary.equals("")){
